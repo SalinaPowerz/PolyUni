@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Portal</title>
+  <link rel="stylesheet" href="globals.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="STUDENT-PORTAL">
+    <div class="div">
+      <form class="overlap-group">
+        <img class="full" src="../../Images/new.png" alt="Logo" />
+        <div class="text-wrapper">Student Portal</div>
+
+        <label class="text-wrapper-2" for="student-number">Student Number</label>
+        <input class="rectangle" id="student-number" type="text" placeholder="Enter student number" />
+		
+		<div class="input-spacing"></div>
+
+        <label class="text-wrapper-3" for="password">Password</label>
+        <input class="rectangle-2" id="password" type="password" placeholder="Enter password" />
+
+        <label class="show-password">
+          <input type="checkbox" id="show-password" onchange="togglePassword()" />
+          Show Password
+        </label>
+
+        <button type="submit" class="blue">
+          <span class="PLACEHOLDER">Login</span>
+        </button>
+      </form>
+
+      <div class="overlap">
+        <p class="p">Polycium University © 2024 All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+    }
+  </script>
+</body>
+</html>

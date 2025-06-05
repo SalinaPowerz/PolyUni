@@ -1,0 +1,144 @@
+.STUDENT-PORTAL {
+  background-color: #f7f8ff;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.STUDENT-PORTAL .div {
+  background-color: #f7f8ff;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 100px;
+  position: relative;
+}
+
+.STUDENT-PORTAL .overlap-group {
+  width: 320px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #b0b0b0;
+  box-shadow: 0px 6px 3.4px #00000054;
+  padding: 20px 16px;
+}
+
+.STUDENT-PORTAL .full {
+  display: block;
+  margin: 0 auto;
+  width: 50px;
+  height: auto;
+  object-fit: cover;
+}
+
+.STUDENT-PORTAL .text-wrapper {
+  font-family: "Crimson Text-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.STUDENT-PORTAL .text-wrapper-2,
+.STUDENT-PORTAL .text-wrapper-3 {
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-size: 14px;
+  color: #000;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+
+.STUDENT-PORTAL input.rectangle,
+.STUDENT-PORTAL input.rectangle-2 {
+  width: 100%;
+  height: 36px;
+  background-color: #d3e2f3;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  color: #000;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.STUDENT-PORTAL input.rectangle:focus,
+.STUDENT-PORTAL input.rectangle-2:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #d3e2f3;
+}
+
+.input-spacing {
+  margin-top: 16px;
+}
+
+.show-password {
+  font-size: 12px;
+  color: #333;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Albert Sans-Regular", Helvetica;
+}
+
+.STUDENT-PORTAL .blue {
+  width: 50%;
+  height: 40px;
+  background-color: #5ba49c;
+  border-radius: 10px;
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.STUDENT-PORTAL .PLACEHOLDER {
+  font-family: "Crimson Text-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 15px;
+  text-align: center;
+  line-height: 40px;
+}
+
+.STUDENT-PORTAL .overlap {
+  background-color: #32508f;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.STUDENT-PORTAL .p {
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-size: 12px;
+  color: #ffffff;
+  margin: 0;
+}
+
+@media screen and (max-width: 480px) {
+  .STUDENT-PORTAL .overlap-group {
+    width: 90%;
+  }
+
+  .STUDENT-PORTAL .text-wrapper {
+    font-size: 18px;
+  }
+
+  .STUDENT-PORTAL .PLACEHOLDER {
+    font-size: 14px;
+  }
+}
