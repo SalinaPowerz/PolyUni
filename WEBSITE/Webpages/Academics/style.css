@@ -1,317 +1,103 @@
-
-.ACADEMICS {
-  display: flex;
-   justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  overflow: hidden;
 }
 
-
-.ACADEMICS .div {
-  background-color: #ffffff;
-  width: 100%;
-  height: 100%;
+.ACADEMICS {
   position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  font-family: "Albert Sans-Regular", Helvetica, sans-serif;
+  overflow: hidden;
+
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  padding-top: 45px;
+  
+  background-image: url('../../Images/Bg.png');
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat;
 }
 
+
 .ACADEMICS .overlap {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-image: url("../../Images/bg.png");
-  background-size: cover;
-  background-position: center;
+  min-height: 100vh;
+  padding-top: 60px;
 }
 
 .ACADEMICS .rectangle {
-  position: absolute;
-  width: 300px;
-  height: 838px;
-  top: 100px;  
-  right: 136px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px;
+  width: 700px;
+  height: 430px;
   background-color: #ffffff;
-  border: 4px solid;
-  border-color: #000000;
+  border: 3px solid #000000;
   box-shadow: 0px 4px 4px #00000040;
 }
 
-.ACADEMICS .bachelor-of-science {
-  top: 211px;
-  position: absolute;
-  width: 916px;
-  left: 211px;
-  font-family: "Crimson Text-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ACADEMICS .text-wrapper {
-  position: absolute;
-  width: 929px;
-  top: 254px;
-  left: 211px;
-  font-family: "Albert Sans-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 22px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ACADEMICS .p {
-  position: absolute;
-  width: 929px;
-  top: 389px;
-  left: 211px;
-  font-family: "Albert Sans-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 22px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ACADEMICS .text-wrapper-2 {
-  position: absolute;
-  width: 963px;
-  top: 510px;
-  left: 211px;
-  font-family: "Albert Sans-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 22px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ACADEMICS .text-wrapper-3 {
-  position: absolute;
-  width: 929px;
-  top: 773px;
-  left: 211px;
-  font-family: "Albert Sans-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 22px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ACADEMICS .text-wrapper-4 {
-  position: absolute;
-  width: 929px;
-  top: 638px;
-  left: 211px;
-  font-family: "Albert Sans-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 22px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ACADEMICS .text-wrapper-5 {
-  top: 344px;
-  position: absolute;
-  width: 916px;
-  left: 211px;
-  font-family: "Crimson Text-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ACADEMICS .text-wrapper-6 {
-  top: 467px;
-  position: absolute;
-  width: 916px;
-  left: 211px;
-  font-family: "Crimson Text-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ACADEMICS .text-wrapper-7 {
-  top: 594px;
-  position: absolute;
-  width: 916px;
-  left: 211px;
-  font-family: "Crimson Text-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ACADEMICS .text-wrapper-8 {
-  top: 730px;
-  position: absolute;
-  width: 916px;
-  left: 211px;
-  font-family: "Crimson Text-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-}
 
 .ACADEMICS .text-wrapper-9 {
   position: absolute;
-  width: 769px;
-  top: 104px;
-  left: 190px;
+  width: 700px;
+  top: 50px;
+  left: 35px;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
+  font-size: 30px;
   color: #000000;
-  font-size: 48px;
-  letter-spacing: 0;
-  line-height: normal;
+  font-weight: bold;
 }
 
-.ACADEMICS .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background-color: #32508f;
-  box-shadow: 0px 4px 4px #00000040;
-}
-
-
-.ACADEMICS .group {
-  width: 1452px;
-  height: 80px;
-}
-
-.ACADEMICS .navbar-2 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 75px;
-}
-
-.ACADEMICS .text-wrapper-10 {
-  width: 113px;
-  left: 959px;
+.ACADEMICS .bachelor-of-science {
   position: absolute;
-  top: 25px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
+  width: 700px;
+  top: 120px;
+  left: 50px;
+  font-family: "Crimson Text-SemiBold", Helvetica;
+  font-weight: 600;
   font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
+  color: #000000;
 }
 
-.ACADEMICS .text-wrapper-11 {
+.ACADEMICS .text-wrapper,
+.ACADEMICS .p,
+.ACADEMICS .text-wrapper-2,
+.ACADEMICS .text-wrapper-3,
+.ACADEMICS .text-wrapper-4 {
   position: absolute;
-  top: 25px;
-  left: 1229px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
+  width: 720px;
+  left: 50px;
+  font-size: 15px;
+  color: #000000;
+  line-height: 1.4;
+}
+
+.ACADEMICS .text-wrapper { top: 140px; }
+.ACADEMICS .text-wrapper-5 { top: 210px; }
+.ACADEMICS .p { top: 230px; }
+.ACADEMICS .text-wrapper-6 { top: 300px; }
+.ACADEMICS .text-wrapper-2 { top: 320px; }
+.ACADEMICS .text-wrapper-7 { top: 390px; }
+.ACADEMICS .text-wrapper-4 { top: 410px; }
+.ACADEMICS .text-wrapper-8 { top: 480px; }
+.ACADEMICS .text-wrapper-3 { top: 500px; }
+
+.ACADEMICS .text-wrapper-5,
+.ACADEMICS .text-wrapper-6,
+.ACADEMICS .text-wrapper-7,
+.ACADEMICS .text-wrapper-8 {
+  position: absolute;
+  width: 700px;
+  left: 50px;
+  font-family: "Crimson Text-SemiBold", Helvetica;
+  font-weight: 600;
   font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
+  color: #000000;
 }
-
-.ACADEMICS .text-wrapper-12 {
-  width: 105px;
-  left: 1098px;
-  position: absolute;
-  top: 25px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ACADEMICS .img {
-  position: absolute;
-  width: 62px;
-  height: 62px;
-  top: 9px;
-  left: 28px;
-  object-fit: cover;
-}
-
-.ACADEMICS .overlap-group {
-  position: absolute;
-  width: 494px;
-  height: 45px;
-  top: 12px;
-  left: 103px;
-}
-
-.ACADEMICS .text-wrapper-13 {
-  position: absolute;
-  width: 312px;
-  top: 0;
-  left: 0;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ACADEMICS .text-wrapper-14 {
-  position: absolute;
-  width: 312px;
-  top: 0;
-  left: 182px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ACADEMICS .text-wrapper-15 {
-  width: 66px;
-  left: 867px;
-  position: absolute;
-  top: 25px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
