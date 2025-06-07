@@ -1,0 +1,580 @@
+.ADMISSION-FORM {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.ADMISSION-FORM .div {
+  background-image: url(./img/ADMISSION-FORM.png);
+  background-size: cover;
+  background-position: 50% 50%;
+  width: 1440px;
+  height: 1292px;
+  position: relative;
+}
+
+.ADMISSION-FORM .ellipse {
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  top: 19px;
+  left: 22px;
+  background-color: #ffffff;
+  border-radius: 13.5px;
+}
+
+.ADMISSION-FORM .closed {
+  position: absolute;
+  width: 826px;
+  height: 1078px;
+  top: 128px;
+  left: 307px;
+  background-color: #ffffff;
+  border-radius: 26px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.ADMISSION-FORM .closed::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.ADMISSION-FORM .overlap {
+  width: 856px;
+  position: relative;
+  height: 1078px;
+}
+
+.ADMISSION-FORM .group {
+  position: absolute;
+  width: 856px;
+  height: 1078px;
+  top: 0;
+  left: 0;
+}
+
+.ADMISSION-FORM .overlap-group {
+  width: 826px;
+  border-radius: 26px;
+  position: relative;
+  height: 1078px;
+}
+
+.ADMISSION-FORM .polygon {
+  left: 732px;
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  top: 784px;
+}
+
+.ADMISSION-FORM .rectangle {
+  position: absolute;
+  width: 826px;
+  height: 1078px;
+  top: 0;
+  left: 0;
+  border-radius: 26px;
+  box-shadow: 0px 4px 4px #00000040;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(222, 237, 255, 1) 100%
+  );
+}
+
+.ADMISSION-FORM .text-wrapper {
+  position: absolute;
+  width: 229px;
+  top: 79px;
+  left: 145px;
+  font-family: "Albert Sans-Italic", Helvetica;
+  font-weight: 400;
+  font-style: italic;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .rectangle-2 {
+  position: absolute;
+  width: 330px;
+  height: 49px;
+  top: 766px;
+  left: 48px;
+  background-color: #efefef;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .polygon-2 {
+  left: 349px;
+  background-image: url(./img/polygon-2.svg);
+  background-size: 100% 100%;
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  top: 784px;
+}
+
+.ADMISSION-FORM .img {
+  position: absolute;
+  width: 330px;
+  height: 46px;
+  top: 248px;
+  left: 442px;
+}
+
+.ADMISSION-FORM .logo-removebg {
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  top: 24px;
+  left: 45px;
+  object-fit: cover;
+}
+
+.ADMISSION-FORM .group-2 {
+  position: absolute;
+  width: 329px;
+  height: 139px;
+  top: 167px;
+  left: 49px;
+}
+
+.ADMISSION-FORM .group-3 {
+  position: absolute;
+  width: 330px;
+  height: 51px;
+  top: 169px;
+  left: 442px;
+}
+
+.ADMISSION-FORM .text-wrapper-2 {
+  position: absolute;
+  top: 182px;
+  left: 465px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .text-wrapper-3 {
+  position: absolute;
+  width: 392px;
+  top: 38px;
+  left: 142px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .text-wrapper-4 {
+  position: absolute;
+  width: 200px;
+  top: 781px;
+  left: 69px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .rectangle-3 {
+  position: absolute;
+  width: 330px;
+  height: 49px;
+  top: 766px;
+  left: 442px;
+  background-color: #efefef;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .text-wrapper-5 {
+  position: absolute;
+  width: 200px;
+  top: 781px;
+  left: 463px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .rectangle-4 {
+  position: absolute;
+  width: 330px;
+  height: 49px;
+  top: 340px;
+  left: 49px;
+  background-color: #efefef;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .rectangle-5 {
+  position: absolute;
+  width: 330px;
+  height: 49px;
+  top: 339px;
+  left: 442px;
+  background-color: #efefef;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .text-wrapper-6 {
+  position: absolute;
+  width: 131px;
+  top: 352px;
+  left: 69px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .text-wrapper-7 {
+  position: absolute;
+  width: 131px;
+  top: 352px;
+  left: 465px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .rectangle-6 {
+  position: absolute;
+  width: 330px;
+  height: 49px;
+  top: 424px;
+  left: 49px;
+  background-color: #efefef;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .rectangle-7 {
+  position: absolute;
+  width: 330px;
+  height: 49px;
+  top: 424px;
+  left: 442px;
+  background-color: #efefef;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .rectangle-8 {
+  position: absolute;
+  width: 330px;
+  height: 49px;
+  top: 514px;
+  left: 49px;
+  background-color: #efefef;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .rectangle-9 {
+  position: absolute;
+  width: 330px;
+  height: 49px;
+  top: 514px;
+  left: 442px;
+  background-color: #efefef;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .rectangle-10 {
+  position: absolute;
+  width: 330px;
+  height: 49px;
+  top: 604px;
+  left: 48px;
+  background-color: #efefef;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .rectangle-11 {
+  position: absolute;
+  width: 330px;
+  height: 49px;
+  top: 604px;
+  left: 442px;
+  background-color: #efefef;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .text-wrapper-8 {
+  position: absolute;
+  top: 437px;
+  left: 69px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .text-wrapper-9 {
+  position: absolute;
+  top: 437px;
+  left: 463px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .text-wrapper-10 {
+  position: absolute;
+  top: 527px;
+  left: 69px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .text-wrapper-11 {
+  position: absolute;
+  top: 527px;
+  left: 465px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .rectangle-12 {
+  position: absolute;
+  width: 330px;
+  height: 49px;
+  top: 688px;
+  left: 49px;
+  background-color: #efefef;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .rectangle-13 {
+  position: absolute;
+  width: 330px;
+  height: 49px;
+  top: 688px;
+  left: 442px;
+  background-color: #efefef;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .text-wrapper-12 {
+  position: absolute;
+  top: 617px;
+  left: 69px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .text-wrapper-13 {
+  position: absolute;
+  top: 617px;
+  left: 463px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .text-wrapper-14 {
+  position: absolute;
+  top: 701px;
+  left: 69px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .p {
+  position: absolute;
+  top: 701px;
+  left: 463px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSION-FORM .green {
+  position: absolute;
+  width: 166px;
+  height: 36px;
+  top: 981px;
+  left: 631px;
+  background-color: #5ba45c;
+  border-radius: 15px;
+}
+
+.ADMISSION-FORM .PLACEHOLDER {
+  position: absolute;
+  width: 166px;
+  height: 26px;
+  top: 4px;
+  left: 0;
+  font-family: "Crimson Text-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.ADMISSION-FORM .polygon-3 {
+  left: 745px;
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  top: 784px;
+}
+
+.ADMISSION-FORM .group-wrapper {
+  position: fixed;
+  width: 1440px;
+  height: 64px;
+  top: 0;
+  left: 0;
+}
+
+.ADMISSION-FORM .overlap-group-wrapper {
+  width: 1442px;
+  height: 64px;
+}
+
+.ADMISSION-FORM .overlap-group-2 {
+  position: relative;
+  width: 1440px;
+  height: 64px;
+  background-color: #32508f;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .frame-wrapper {
+  position: absolute;
+  width: 61px;
+  height: 64px;
+  top: 0;
+  left: 0;
+  background-color: #5895d6;
+}
+
+.ADMISSION-FORM .frame {
+  display: flex;
+  flex-direction: column;
+  width: 35px;
+  align-items: flex-start;
+  gap: 9px;
+  position: relative;
+  top: 16px;
+  left: 13px;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.ADMISSION-FORM .rectangle-14 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 4.88px;
+  background-color: #deedf2;
+  border-radius: 2px;
+}
+
+.ADMISSION-FORM .rectangle-15 {
+  position: absolute;
+  width: 47px;
+  height: 47px;
+  top: 8px;
+  left: 74px;
+  object-fit: cover;
+}
+
+.ADMISSION-FORM .text-wrapper-15 {
+  position: absolute;
+  top: 16px;
+  left: 134px;
+  text-shadow: 0px 4px 4px #00000040;
+  font-family: "Crimson Text-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: normal;
+}

@@ -1,0 +1,299 @@
+.LOGIN {
+  background-color: #00000033;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.LOGIN .div {
+  background-color: #00000033;
+  overflow: hidden;
+  width: 1440px;
+  height: 1024px;
+  position: relative;
+}
+
+.LOGIN .overlap {
+  position: absolute;
+  width: 1478px;
+  height: 994px;
+  top: 30px;
+  left: 0;
+}
+
+.LOGIN .element {
+  position: absolute;
+  width: 1440px;
+  height: 994px;
+  top: 0;
+  left: 0;
+}
+
+.LOGIN .text-wrapper {
+  top: 888px;
+  left: 559px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-size: 15px;
+  white-space: nowrap;
+  position: absolute;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .rectangle {
+  position: absolute;
+  width: 446px;
+  height: 456px;
+  top: 226px;
+  left: 497px;
+  border-radius: 26px;
+  box-shadow: 0px 4px 4px #00000040;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(222, 237, 255, 1) 100%
+  );
+}
+
+.LOGIN .p {
+  position: absolute;
+  top: 618px;
+  left: 627px;
+  text-shadow: 0px 4px 4px #00000040;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.LOGIN .group {
+  position: absolute;
+  width: 321px;
+  height: 69px;
+  top: 482px;
+  left: 561px;
+}
+
+.LOGIN .text-wrapper-2 {
+  position: absolute;
+  top: 636px;
+  left: 673px;
+  text-shadow: 0px 4px 4px #00000040;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #07237d;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.LOGIN .img {
+  position: absolute;
+  width: 321px;
+  height: 69px;
+  top: 403px;
+  left: 561px;
+}
+
+.LOGIN .text-wrapper-3 {
+  position: absolute;
+  top: 420px;
+  left: 590px;
+  font-family: "Albert Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.LOGIN .frame {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 293px;
+  left: 1378px;
+}
+
+.LOGIN .text-wrapper-4 {
+  position: absolute;
+  width: 109px;
+  top: 346px;
+  left: 662px;
+  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 25px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .logo-removebg {
+  position: absolute;
+  width: 109px;
+  height: 109px;
+  top: 238px;
+  left: 662px;
+  object-fit: cover;
+}
+
+.LOGIN .yellow {
+  position: absolute;
+  width: 119px;
+  height: 39px;
+  top: 561px;
+  left: 662px;
+  background-color: #ffc83d;
+  border-radius: 462.7px;
+  box-shadow: 0px 8.64px 8.64px #00000040;
+}
+
+.LOGIN .PLACEHOLDER {
+  position: absolute;
+  width: 119px;
+  height: 29px;
+  top: 5px;
+  left: 0;
+  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 80px;
+}
+
+.LOGIN .navbar-wrapper {
+  width: 1452px;
+  height: 80px;
+}
+
+.LOGIN .navbar-2 {
+  position: relative;
+  background-color: #32508f;
+  box-shadow: 0px 4px 4px #00000040;
+  width: 1440px;
+  height: 80px;
+}
+
+.LOGIN .text-wrapper-5 {
+  width: 113px;
+  left: 959px;
+  position: absolute;
+  top: 25px;
+  text-shadow: 0px 4px 4px #00000040;
+  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .text-wrapper-6 {
+  position: absolute;
+  top: 25px;
+  left: 1229px;
+  text-shadow: 0px 4px 4px #00000040;
+  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .text-wrapper-7 {
+  width: 105px;
+  left: 1098px;
+  position: absolute;
+  top: 25px;
+  text-shadow: 0px 4px 4px #00000040;
+  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .rectangle-2 {
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  top: 9px;
+  left: 28px;
+  object-fit: cover;
+}
+
+.LOGIN .overlap-group {
+  position: absolute;
+  width: 494px;
+  height: 45px;
+  top: 12px;
+  left: 103px;
+}
+
+.LOGIN .text-wrapper-8 {
+  width: 312px;
+  top: 0;
+  left: 0;
+  text-shadow: 0px 4px 4px #00000040;
+  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
+  font-size: 32px;
+  position: absolute;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .text-wrapper-9 {
+  position: absolute;
+  width: 312px;
+  top: 0;
+  left: 182px;
+  text-shadow: 0px 4px 4px #00000040;
+  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .text-wrapper-10 {
+  width: 66px;
+  left: 867px;
+  position: absolute;
+  top: 25px;
+  text-shadow: 0px 4px 4px #00000040;
+  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
