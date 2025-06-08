@@ -1,4 +1,36 @@
-.ADMISSION {
+body{
+	margin:0;
+	overflow:hidden;
+}
+
+.navigation:hover{
+	font-weight: bold;
+}
+
+#highlight {
+  position: relative;
+  z-index: 1000;
+}
+
+#highlight::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  width: 263px;
+  height: 65px;
+  background-color: rgba(173, 216, 230, 0.3);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+#highlight:hover::before {
+  opacity: 1;
+}
+
+
+.ADMISSIONGOOD {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -6,7 +38,7 @@
   width: 100%;
 }
 
-.ADMISSION .div {
+.ADMISSIONGOOD .div {
   background-color: #ffffff;
   overflow: hidden;
   width: 1440px;
@@ -14,15 +46,15 @@
   position: relative;
 }
 
-.ADMISSION .overlap {
+.ADMISSIONGOOD .overlap {
   position: absolute;
   width: 1511px;
   height: 1032px;
-  top: 64px;
+  top: 0px;
   left: -1px;
 }
 
-.ADMISSION .element {
+.ADMISSIONGOOD .element {
   position: absolute;
   width: 1440px;
   height: 960px;
@@ -30,7 +62,7 @@
   left: 1px;
 }
 
-.ADMISSION .rectangle {
+.ADMISSIONGOOD .rectangle {
   position: absolute;
   width: 1180px;
   height: 960px;
@@ -39,7 +71,7 @@
   background-color: #ffffff;
 }
 
-.ADMISSION .rectangle-2 {
+.ADMISSIONGOOD .rectangle-2 {
   position: absolute;
   width: 1180px;
   height: 960px;
@@ -48,7 +80,7 @@
   background-color: #ffffff;
 }
 
-.ADMISSION .text-wrapper {
+.ADMISSIONGOOD .text-wrapper {
   position: absolute;
   height: 36px;
   top: 59px;
@@ -60,9 +92,10 @@
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
+  font-weight: bold;
 }
 
-.ADMISSION .rectangle-3 {
+.ADMISSIONGOOD .rectangle-3 {
   position: absolute;
   width: 260px;
   height: 960px;
@@ -71,7 +104,7 @@
   background-color: #32508fa3;
 }
 
-.ADMISSION .nav {
+.ADMISSIONGOOD .nav {
   top: 78px;
   position: absolute;
   width: 261px;
@@ -79,11 +112,11 @@
   left: 0;
 }
 
-.ADMISSION .about {
+.ADMISSIONGOOD .about {
   position: absolute;
   width: 231px;
   height: 57px;
-  top: 12px;
+  top: -31px;
   left: 17px;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
   font-weight: 400;
@@ -93,7 +126,12 @@
   line-height: normal;
 }
 
-.ADMISSION .about-wrapper {
+.about:hover{
+	color: white;
+	font-weight: bold;
+}
+
+.ADMISSIONGOOD .about-wrapper {
   top: 162px;
   position: absolute;
   width: 261px;
@@ -101,7 +139,7 @@
   left: 0;
 }
 
-.ADMISSION .div-wrapper {
+.ADMISSIONGOOD .div-wrapper {
   top: 246px;
   position: absolute;
   width: 261px;
@@ -109,26 +147,27 @@
   left: 0;
 }
 
-.ADMISSION .text-wrapper-2 {
+.ADMISSIONGOOD .text-wrapper-2 {
   position: absolute;
   width: 393px;
   height: 86px;
-  top: 34px;
-  left: 321px;
+  top: 59px;
+  left: 300px;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
   font-weight: 400;
   color: #000000;
   font-size: 20px;
   text-align: center;
   letter-spacing: 0;
+  font-weight: bold;
   line-height: normal;
 }
 
-.ADMISSION .text-wrapper-3 {
+.ADMISSIONGOOD .text-wrapper-3 {
   position: absolute;
   width: 393px;
   height: 86px;
-  top: 71px;
+  top: 96px;
   left: 401px;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
   font-weight: 400;
@@ -136,143 +175,22 @@
   font-size: 20px;
   letter-spacing: 0;
   line-height: normal;
+  font-weight: bold;
 }
 
-.ADMISSION .text-wrapper-4 {
+.ADMISSIONGOOD .text-wrapper-4 {
   position: absolute;
   width: 393px;
   height: 86px;
-  top: 71px;
+  top: 96px;
   left: 313px;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
   font-weight: 400;
   color: #000000;
   font-size: 20px;
   letter-spacing: 0;
+  font-weight: bold;
   line-height: normal;
 }
 
-.ADMISSION .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 1440px;
-  height: 80px;
-}
 
-.ADMISSION .group {
-  width: 1452px;
-  height: 80px;
-}
-
-.ADMISSION .navbar-2 {
-  position: relative;
-  background-color: #32508f;
-  box-shadow: 0px 4px 4px #00000040;
-  width: 1440px;
-  height: 80px;
-}
-
-.ADMISSION .text-wrapper-5 {
-  width: 113px;
-  left: 959px;
-  position: absolute;
-  top: 25px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ADMISSION .text-wrapper-6 {
-  position: absolute;
-  top: 25px;
-  left: 1229px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ADMISSION .text-wrapper-7 {
-  width: 105px;
-  left: 1098px;
-  position: absolute;
-  top: 25px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ADMISSION .img {
-  position: absolute;
-  width: 62px;
-  height: 62px;
-  top: 9px;
-  left: 28px;
-  object-fit: cover;
-}
-
-.ADMISSION .overlap-group {
-  position: absolute;
-  width: 494px;
-  height: 45px;
-  top: 12px;
-  left: 103px;
-}
-
-.ADMISSION .text-wrapper-8 {
-  position: absolute;
-  width: 312px;
-  top: 0;
-  left: 0;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ADMISSION .text-wrapper-9 {
-  position: absolute;
-  width: 312px;
-  top: 0;
-  left: 182px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ADMISSION .text-wrapper-10 {
-  width: 66px;
-  left: 867px;
-  position: absolute;
-  top: 25px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}

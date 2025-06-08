@@ -1,3 +1,35 @@
+body{
+	margin:0;
+	overflow:hidden;
+}
+
+.navigation:hover{
+	font-weight: bold;
+}
+
+#highlight {
+  position: relative;
+  z-index: 1000;
+}
+
+#highlight::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  width: 263px;
+  height: 65px;
+  background-color: rgba(173, 216, 230, 0.3);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+#highlight:hover::before {
+  opacity: 1;
+}
+
+
 .ADMISSIONGOOD {
   background-color: #ffffff;
   display: flex;
@@ -18,7 +50,7 @@
   position: absolute;
   width: 1511px;
   height: 1032px;
-  top: 64px;
+  top: 0px;
   left: -1px;
 }
 
@@ -60,6 +92,7 @@
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
+  font-weight: bold;
 }
 
 .ADMISSIONGOOD .rectangle-3 {
@@ -83,7 +116,7 @@
   position: absolute;
   width: 231px;
   height: 57px;
-  top: 12px;
+  top: -31px;
   left: 17px;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
   font-weight: 400;
@@ -91,6 +124,11 @@
   font-size: 33px;
   letter-spacing: 0;
   line-height: normal;
+}
+
+.about:hover{
+	color: white;
+	font-weight: bold;
 }
 
 .ADMISSIONGOOD .about-wrapper {
@@ -113,14 +151,15 @@
   position: absolute;
   width: 393px;
   height: 86px;
-  top: 34px;
-  left: 321px;
+  top: 59px;
+  left: 300px;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
   font-weight: 400;
   color: #000000;
   font-size: 20px;
   text-align: center;
   letter-spacing: 0;
+  font-weight: bold;
   line-height: normal;
 }
 
@@ -128,7 +167,7 @@
   position: absolute;
   width: 393px;
   height: 86px;
-  top: 71px;
+  top: 96px;
   left: 401px;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
   font-weight: 400;
@@ -136,27 +175,29 @@
   font-size: 20px;
   letter-spacing: 0;
   line-height: normal;
+  font-weight: bold;
 }
 
 .ADMISSIONGOOD .text-wrapper-4 {
   position: absolute;
   width: 393px;
   height: 86px;
-  top: 71px;
+  top: 96px;
   left: 313px;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
   font-weight: 400;
   color: #000000;
   font-size: 20px;
   letter-spacing: 0;
+  font-weight: bold;
   line-height: normal;
 }
 
 .ADMISSIONGOOD .rectangle-4 {
   position: absolute;
-  width: 569px;
+  width: 445px;
   height: 209px;
-  top: 151px;
+  top: 135px;
   left: 313px;
   background-color: #d8eff5;
 }
@@ -164,137 +205,12 @@
 .ADMISSIONGOOD .now-submit-the {
   position: absolute;
   width: 548px;
-  top: 164px;
+  top: 140px;
   left: 331px;
   font-family: "Crimson Text-Regular", Helvetica;
   font-weight: 400;
   color: #15102f;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ADMISSIONGOOD .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 1440px;
-  height: 80px;
-}
-
-.ADMISSIONGOOD .group {
-  width: 1452px;
-  height: 80px;
-}
-
-.ADMISSIONGOOD .navbar-2 {
-  position: relative;
-  background-color: #32508f;
-  box-shadow: 0px 4px 4px #00000040;
-  width: 1440px;
-  height: 80px;
-}
-
-.ADMISSIONGOOD .text-wrapper-5 {
-  width: 113px;
-  left: 959px;
-  position: absolute;
-  top: 25px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ADMISSIONGOOD .text-wrapper-6 {
-  position: absolute;
-  top: 25px;
-  left: 1229px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ADMISSIONGOOD .text-wrapper-7 {
-  width: 105px;
-  left: 1098px;
-  position: absolute;
-  top: 25px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ADMISSIONGOOD .img {
-  position: absolute;
-  width: 62px;
-  height: 62px;
-  top: 9px;
-  left: 28px;
-  object-fit: cover;
-}
-
-.ADMISSIONGOOD .overlap-group {
-  position: absolute;
-  width: 494px;
-  height: 45px;
-  top: 12px;
-  left: 103px;
-}
-
-.ADMISSIONGOOD .text-wrapper-8 {
-  position: absolute;
-  width: 312px;
-  top: 0;
-  left: 0;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ADMISSIONGOOD .text-wrapper-9 {
-  position: absolute;
-  width: 312px;
-  top: 0;
-  left: 182px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.ADMISSIONGOOD .text-wrapper-10 {
-  width: 66px;
-  left: 867px;
-  position: absolute;
-  top: 25px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
+  font-size: 17px;
   letter-spacing: 0;
   line-height: normal;
 }
