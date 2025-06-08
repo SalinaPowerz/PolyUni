@@ -1,0 +1,184 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "CrimsonText-Regular", serif, Arial, sans-serif;
+  background: #ffffff;
+  color: #000000;
+  overflow-x: hidden;
+}
+
+.examination-start {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 1024px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #ffffff;
+  font-size: 20px;
+  line-height: 1.4;
+  padding-top: 80px;
+}
+
+.bg-image {
+  position: absolute;
+  top: 55px;
+  left: -274px;
+  width: 1730px;
+  height: 973px;
+  object-fit: cover;
+  aspect-ratio: 1730 / 973;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  z-index: 1;
+}
+
+.content-box {
+  position: absolute;
+  top: 55px;
+  left: 492px;
+  width: 905px;
+  height: 1000px;
+  background: linear-gradient(180deg, #ffffff 0%, #deedff 100%);
+  z-index: 2;
+  padding: 40px 60px;
+  box-sizing: border-box;
+}
+
+.logo {
+position: absolute;
+  top: 69px;
+  left: 125px;
+  width: 100px;
+  height: 100px;
+  z-index: 3;
+}
+
+.exam-time-text {
+  position: absolute;
+  top: 194px;
+  left: 125px;
+  width: 657px;
+  height: 133px;
+  font-family: "KonkhmerSleokchher-Regular", sans-serif, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  text-align: left;
+  color: #000;
+  z-index: 3;
+}
+
+.start-button {
+position: absolute;
+  top: 470px;
+  left: 583px;
+  width: 160px;
+  height: 44px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 1000px;
+  background: #ffc83d;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "CrimsonText-Regular", serif, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  user-select: none;
+  z-index: 3;
+  transition: background 0.3s ease;
+}
+
+.start-button:hover,
+.start-button:focus {
+  background: #e6b833;
+  outline: none;
+}
+
+.rules {
+position: absolute;
+  top: 264px;
+  left: 125px;
+  width: 722px;
+  height: 270px;
+  font-size: 15px;
+  font-weight: 400;
+  font-family: "CrimsonText-Regular", serif, Arial, sans-serif;
+  text-align: left;
+  color: #000;
+  z-index: 3;
+}
+
+.rules-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.rules ul {
+  list-style-type: disc;
+  padding-left: 1em;
+  margin: 0;
+}
+
+.rules ul li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 1024px) {
+  .examination-start {
+    height: auto;
+    padding-top: 80px;
+  }
+
+  .bg-image {
+    position: static;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    left: 0;
+    top: 0;
+  }
+
+  .content-box {
+    position: static;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    padding: 30px 20px;
+  }
+
+  .logo {
+    position: static;
+    margin: 20px auto;
+    display: block;
+  }
+
+  .exam-time-text {
+    position: static;
+    width: 100%;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .start-button {
+    position: static;
+    margin: 20px auto;
+    width: 90%;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 30px;
+  }
+
+  .rules {
+    position: static;
+    width: 90%;
+    margin: 20px auto 40px;
+    font-size: 18px;
+  }
+}

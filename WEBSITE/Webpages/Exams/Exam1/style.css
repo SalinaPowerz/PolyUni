@@ -18,7 +18,7 @@
   z-index: 999;
 }
 
-.next-button, .back-button {
+.next-button {
   background-color: #5BA45C;
   color: white;
   border: none;
@@ -27,11 +27,9 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-   margin: 0 10px;
-  
 }
 
-.next-button:hover , .back-button:hover {
+.next-button:hover {
   background-color: #366e2a;
 }
 
