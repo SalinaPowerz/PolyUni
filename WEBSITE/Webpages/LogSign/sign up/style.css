@@ -27,14 +27,9 @@
 .SIGNUP .text-wrapper {
   top: 846px;
   left: 559px;
-  font-family: "Albert Sans-Regular", Helvetica;
-  font-size: 15px;
-  white-space: nowrap;
   position: absolute;
-  font-weight: 400;
+  font-size: 15px;
   color: #ffffff;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
 .SIGNUP .overlap-group {
@@ -43,6 +38,7 @@
   height: 549px;
   top: 191px;
   left: 408px;
+  background: white;
   border-radius: 26px;
   box-shadow: 0px 4px 4px #00000040;
 }
@@ -54,69 +50,58 @@
   top: 465px;
   left: 374px;
   background-color: #ffc83d;
+  border: none;
   border-radius: 462.7px;
   box-shadow: 0px 4px 4px #00000040;
+  cursor: pointer;
 }
 
 .SIGNUP .PLACEHOLDER {
-  position: absolute;
-  width: 119px;
-  height: 29px;
-  top: 5px;
-  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
+  color: white;
   font-size: 20px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
 .SIGNUP .back-to-log-in {
   position: absolute;
   top: 475px;
   left: 130px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Albert Sans-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
   font-size: 15px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
+  color: black;
+  text-shadow: 0px 4px 4px #00000040;
 }
 
-.SIGNUP .group {
+.SIGNUP input {
   position: absolute;
   width: 392px;
   height: 60px;
-  top: 389px;
   left: 116px;
-}
-
-.SIGNUP .img {
-  position: absolute;
-  width: 392px;
-  height: 60px;
-  top: 319px;
-  left: 116px;
-}
-
-.SIGNUP .group-2 {
-  position: absolute;
-  width: 392px;
-  height: 60px;
-  top: 249px;
-  left: 116px;
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
 }
 
 .SIGNUP .group-3 {
-  position: absolute;
-  width: 392px;
-  height: 60px;
   top: 180px;
-  left: 116px;
+}
+
+.SIGNUP .group-2 {
+  top: 249px;
+}
+
+.SIGNUP .img {
+  top: 319px;
+}
+
+.SIGNUP .group {
+  top: 389px;
 }
 
 .SIGNUP .overlap-group-2 {
@@ -125,27 +110,17 @@
   height: 158px;
   top: 21px;
   left: 257px;
+  text-align: center;
 }
 
 .SIGNUP .text-wrapper-2 {
-  position: absolute;
-  width: 109px;
-  top: 108px;
-  left: 0;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
+  margin-top: 110px;
   font-size: 25px;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
 .SIGNUP .logo-removebg {
-  position: absolute;
   width: 109px;
   height: 109px;
-  top: 0;
-  left: 0;
   object-fit: cover;
 }
 
@@ -153,65 +128,22 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 1440px;
+  width: 100%;
   height: 80px;
+  z-index: 100;
 }
 
 .SIGNUP .navbar-wrapper {
-  width: 1452px;
+  width: 1440px;
   height: 80px;
 }
 
 .SIGNUP .navbar-2 {
-  position: relative;
   background-color: #32508f;
-  box-shadow: 0px 4px 4px #00000040;
   width: 1440px;
   height: 80px;
-}
-
-.SIGNUP .text-wrapper-3 {
-  width: 113px;
-  left: 959px;
-  position: absolute;
-  top: 25px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.SIGNUP .text-wrapper-4 {
-  position: absolute;
-  top: 25px;
-  left: 1229px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.SIGNUP .text-wrapper-5 {
-  width: 105px;
-  left: 1098px;
-  position: absolute;
-  top: 25px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
+  position: relative;
+  box-shadow: 0px 4px 4px #00000040;
 }
 
 .SIGNUP .rectangle {
@@ -225,51 +157,49 @@
 
 .SIGNUP .overlap-2 {
   position: absolute;
-  width: 494px;
-  height: 45px;
   top: 12px;
   left: 103px;
 }
 
-.SIGNUP .text-wrapper-6 {
-  width: 312px;
-  top: 0;
-  left: 0;
-  text-shadow: 0px 4px 4px #00000040;
+.SIGNUP .text-wrapper-6,
+.SIGNUP .text-wrapper-7 {
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
   font-size: 32px;
-  position: absolute;
-  font-weight: 400;
-  color: #ffffff;
-  letter-spacing: 0;
-  line-height: normal;
+  color: white;
+  text-shadow: 0px 4px 4px #00000040;
 }
 
 .SIGNUP .text-wrapper-7 {
-  position: absolute;
-  width: 312px;
-  top: 0;
   left: 182px;
+  position: absolute;
+  top: 0;
+}
+
+.SIGNUP .text-wrapper-8,
+.SIGNUP .text-wrapper-3,
+.SIGNUP .text-wrapper-4,
+.SIGNUP .text-wrapper-5 {
+  position: absolute;
+  top: 25px;
+  font-size: 16px;
+  color: white;
   text-shadow: 0px 4px 4px #00000040;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
+  text-align: center;
 }
 
 .SIGNUP .text-wrapper-8 {
-  width: 66px;
   left: 867px;
-  position: absolute;
-  top: 25px;
-  text-shadow: 0px 4px 4px #00000040;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
+}
+
+.SIGNUP .text-wrapper-3 {
+  left: 959px;
+}
+
+.SIGNUP .text-wrapper-5 {
+  left: 1098px;
+}
+
+.SIGNUP .text-wrapper-4 {
+  left: 1229px;
 }
