@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,21 +6,13 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-  
-  <div style="width: 100%; height: 60px; background-color: #32508F; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; box-sizing: border-box;" id="Navigation_bar">
-  <div style="display: flex; align-items: center;">
-      <img src="../../Images/new.png" width="50px" alt="Logo" style="vertical-align: middle; margin-right: 10px;" />
-    <span style="font-size: 30px; color: #FFFFFF; ">POLYCIUM UNIVERSITY</span>
-  </div>
+    <div style="width: 100%; height: 60px; background-color: #32508F; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; box-sizing: border-box;" id="Navigation_bar">
+      <div style="display: flex; align-items: center;">
+        <img src="../../Images/new.png" width="50px" alt="Logo" style="vertical-align: middle; margin-right: 10px;" />
+        <span style="font-size: 30px; color: #FFFFFF;">POLYCIUM UNIVERSITY</span>
+      </div>
+    </div>
 
-  <nav style="display: flex; gap: 12px; font-family: Helvetica; color: #FFFFFF; margin-right: 30px;">
-    <a class="navigation" style="font-size: 17px; color: #FFFFFF; text-decoration: none; padding: 4px 10px;" href="#">ABOUT</a>
-    <a class="navigation" style="font-size: 17px; color: #FFFFFF; text-decoration: none; padding: 4px 10px;" href="#">ACADEMICS</a>
-    <a class="navigation" style="font-size: 17px; color: #FFFFFF; text-decoration: none; padding: 4px 10px;" href="#">ADMISSION</a>
-    <a class="navigation" style="font-size: 17px; color: #FFFFFF; text-decoration: none; padding: 4px 10px;" href="#">STUDENT PORTAL</a>
-  </nav>
-</div>
-  
     <div class="ADMISSIONGOOD">
       <div class="div">
         <div class="overlap">
@@ -30,14 +21,21 @@
           <div class="rectangle-2"></div>
           <div class="text-wrapper">School Year:</div>
           <div class="rectangle-3"></div>
-          <div class="nav"><div class="about" id="highlight">Profile</div></div>
-          <div class="about-wrapper"><div class="about" id="highlight" >Exams</div></div>
-          <div class="div-wrapper"><div class="about" id="highlight">Dashboard</div></div>
+          <div class="nav"><div class="about highlight">Profile</div></div>
+          <div class="about-wrapper"><div class="about highlight">Exams</div></div>
+          <div class="div-wrapper"><div class="about highlight">Dashboard</div></div>
+          <div class="logout-wrapper"><div class="about highlight logout">Logout</div></div>
           <div class="text-wrapper-2">2025 - 2026</div>
           <div class="text-wrapper-4">Results:</div>
           <div class="rectangle-4"></div>
         </div>
       </div>
     </div>
+    <script>
+      document.querySelector('.logout').addEventListener('click', function () {
+        alert('Logging out...');
+        window.location.href = '/login';
+      });
+    </script>
   </body>
 </html>

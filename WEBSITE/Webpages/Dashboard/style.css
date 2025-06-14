@@ -1,18 +1,19 @@
-body{
-	margin:0;
-	overflow:hidden;
+body {
+  margin: 0;
+  overflow-x: hidden;
+  overflow: hidden;
 }
 
-.navigation:hover{
-	font-weight: bold;
+.navigation:hover {
+  font-weight: bold;
 }
 
-#highlight {
+.highlight {
   position: relative;
   z-index: 1000;
 }
 
-#highlight::before {
+.highlight::before {
   content: "";
   position: absolute;
   top: -10px;
@@ -25,10 +26,9 @@ body{
   opacity: 0;
 }
 
-#highlight:hover::before {
+.highlight:hover::before {
   opacity: 1;
 }
-
 
 .ADMISSIONGOOD {
   background-color: #ffffff;
@@ -86,13 +86,12 @@ body{
   top: 59px;
   left: 313px;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
+  font-weight: bold;
   color: #000000;
   font-size: 20px;
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
-  font-weight: bold;
 }
 
 .ADMISSIONGOOD .rectangle-3 {
@@ -104,15 +103,23 @@ body{
   background-color: #32508fa3;
 }
 
-.ADMISSIONGOOD .nav {
-  top: 78px;
+/* Navigation Links */
+.ADMISSIONGOOD .nav,
+.ADMISSIONGOOD .about-wrapper,
+.ADMISSIONGOOD .div-wrapper,
+.ADMISSIONGOOD .logout-wrapper {
   position: absolute;
   width: 261px;
   height: 84px;
   left: 0;
 }
 
-.ADMISSIONGOOD .about {
+.ADMISSIONGOOD .nav { top: 78px; }
+.ADMISSIONGOOD .about-wrapper { top: 162px; }
+.ADMISSIONGOOD .div-wrapper { top: 246px; }
+.ADMISSIONGOOD .logout-wrapper { top: 330px; }
+
+.about {
   position: absolute;
   width: 231px;
   height: 57px;
@@ -124,27 +131,12 @@ body{
   font-size: 33px;
   letter-spacing: 0;
   line-height: normal;
+  cursor: pointer;
 }
 
-.about:hover{
-	color: white;
-	font-weight: bold;
-}
-
-.ADMISSIONGOOD .about-wrapper {
-  top: 162px;
-  position: absolute;
-  width: 261px;
-  height: 84px;
-  left: 0;
-}
-
-.ADMISSIONGOOD .div-wrapper {
-  top: 246px;
-  position: absolute;
-  width: 261px;
-  height: 84px;
-  left: 0;
+.about:hover {
+  color: white;
+  font-weight: bold;
 }
 
 .ADMISSIONGOOD .text-wrapper-2 {
@@ -154,28 +146,12 @@ body{
   top: 59px;
   left: 300px;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
+  font-weight: bold;
   color: #000000;
   font-size: 20px;
   text-align: center;
   letter-spacing: 0;
-  font-weight: bold;
   line-height: normal;
-}
-
-.ADMISSIONGOOD .text-wrapper-3 {
-  position: absolute;
-  width: 393px;
-  height: 86px;
-  top: 96px;
-  left: 401px;
-  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-  font-weight: bold;
 }
 
 .ADMISSIONGOOD .text-wrapper-4 {
@@ -185,12 +161,10 @@ body{
   top: 96px;
   left: 313px;
   font-family: "Konkhmer Sleokchher-Regular", Helvetica;
-  font-weight: 400;
+  font-weight: bold;
   color: #000000;
   font-size: 20px;
   letter-spacing: 0;
-  font-weight: bold;
   line-height: normal;
 }
-
 

@@ -1,10 +1,10 @@
-body{
-	margin:0;
-	overflow:hidden;
+body {
+  margin: 0;
+  overflow: hidden;
 }
 
-.navigation:hover{
-	font-weight: bold;
+.navigation:hover {
+  font-weight: bold;
 }
 
 #highlight {
@@ -28,7 +28,6 @@ body{
 #highlight:hover::before {
   opacity: 1;
 }
-
 
 .ADMISSIONGOOD {
   background-color: #ffffff;
@@ -124,11 +123,12 @@ body{
   font-size: 33px;
   letter-spacing: 0;
   line-height: normal;
+  cursor: pointer;
 }
 
-.about:hover{
-	color: white;
-	font-weight: bold;
+.about:hover {
+  color: white;
+  font-weight: bold;
 }
 
 .ADMISSIONGOOD .about-wrapper {
@@ -145,6 +145,34 @@ body{
   width: 261px;
   height: 84px;
   left: 0;
+}
+
+.logout-wrapper {
+  top: 330px;
+  position: absolute;
+  width: 261px;
+  height: 84px;
+  left: 0;
+}
+
+.logout-btn {
+  position: absolute;
+  width: 231px;
+  height: 57px;
+  top: -31px;
+  left: 17px;
+  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 33px;
+  letter-spacing: 0;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  color: #ff4c4c;
+  font-weight: bold;
 }
 
 .ADMISSIONGOOD .text-wrapper-2 {
