@@ -70,8 +70,8 @@ position: absolute;
   z-index: 3;
 }
 
-.start-button, .start-disabled {
-position: absolute;
+.start-button {
+  position: absolute;
   top: 470px;
   left: 583px;
   width: 160px;
@@ -93,11 +93,26 @@ position: absolute;
   transition: background 0.3s ease;
 }
 
-.start-disabled{
-  pointer-events: none;
-  cursor: not-allowed;
+.start-disabled {
+  position: absolute;
+  top: 470px;
+  left: 583px;
+  width: 160px;
+  height: 44px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 1000px;
   background: #cccccc;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "CrimsonText-Regular", serif, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
   color: #666666;
+  user-select: none;
+  z-index: 3;
+  pointer-events: none;
 }
 
 .start-button:hover,
