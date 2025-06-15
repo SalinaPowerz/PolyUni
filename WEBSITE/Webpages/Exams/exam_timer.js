@@ -123,5 +123,5 @@ function showMyAnswers2(){
     document.getElementById('exam-grades').value = examResult;
   }
 
-  alert("Your exam result has been recorded!" + finalScore + "/80\nfirst " + firstExamScore + " second " + secondExamScore);
+  alert("Your exam result has been recorded!");
 }

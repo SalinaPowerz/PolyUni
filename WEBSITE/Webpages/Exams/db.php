@@ -11,7 +11,7 @@ $dbname = "polyciumuniversity";
 $termux = "/data/data/com.termux/files/usr/var/run/mysqld.sock";
 
 // remove mo yung port & termux sa parameter if di ka sa termux
-$conn = mysqli_connect($servername, $username, $password, $dbname, 3306, $termux); 
+$conn = mysqli_connect($servername, $username, $password, $dbname); 
 
 if(!$conn) {
    // echo "ayaw";//
