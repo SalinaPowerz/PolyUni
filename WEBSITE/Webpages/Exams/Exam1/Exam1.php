@@ -1,3 +1,8 @@
+<?php
+  include '../db.php';
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -420,7 +425,7 @@
   </ul>
 </section>
   
-  <a href="../exam2/exam2.html">
+  <a href="../exam2/exam2.php">
   <div style="text-align: center; margin-top: 50px; margin-left: 600px;">
     <button class="next-button" id="next-btn" onclick="showMyAnswers1()">Next</button>
   </div>

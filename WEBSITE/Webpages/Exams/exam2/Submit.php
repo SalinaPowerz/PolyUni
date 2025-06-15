@@ -1,3 +1,8 @@
+<?php
+  include '../db.php';
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +11,7 @@
 <body>
   <h2>Finalizing your exam...</h2>
   <form id="submitForm" action="submitScore.php" method="POST">
+    <input type="hidden" name="acc_id" id="acc-id" value="<?php echo $_SESSION['acc_id']?>">
     <input type="hidden" name="firstExamScore" id="firstExamScore">
     <input type="hidden" name="secondExamScore" id="secondExamScore">
     <input type="hidden" name="exam_score" id="finalScore">

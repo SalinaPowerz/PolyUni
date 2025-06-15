@@ -1,3 +1,7 @@
+<?php
+  include '../../Exams/db.php';
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,11 +32,33 @@
         <img src="../../../Images/new.png" alt="University Logo" class="logo"/>
         <h2>LOG IN</h2>
 
-        <form>
-			<input type="email" id="email" name="email" placeholder="Email" required class="input-field" />
-			<input type="password" id="password" name="password" placeholder="Enter your password" required class="input-field" />	
-          <button class="login-btn" type="submit">LOGIN</button>
+        <form id="login-form" action="" method="POST">
+    			<input type="email" id="email" name="email" placeholder="Email" required class="input-field" />
+    			<input type="password" id="password" name="password" placeholder="Enter your password" required class="input-field" />	
+          <button class="login-btn" name="login_btn" type="submit">LOGIN</button>
         </form>
+        <?php
+          if(isset($_POST['login_btn'])){
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $checkExisting = "SELECT * FROM account WHERE Email = '$email';";
+            $checkExistResult = mysqli_query($conn, $checkExisting);
+            if(mysqli_num_rows($checkExistResult)){
+              header("Location: ../log in/index.php");
+              exit();
+            }
+            else{
+              $getUserData = "SELECT * FROM account WHERE Email = '$email';";
+              $userDataResult = mysqli_query($conn, $getUserData);
+              $userDataRow = mysqli_fetch_assoc($userDataResult);
+              $_SESSION['acc_id'] = $userDataRow['Account_ID'];
+              $_SESSION['email'] = $userDataRow['Email'];
+              header("Location: ../../Dashboard/Dash.php");
+            }
+          }
+        
+        
+        ?>
 
         <div class="register-link">
           Don’t have an account yet? <br>

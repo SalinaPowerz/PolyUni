@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
           showMyAnswers2();
         }
 
-        window.location.href = "../exam2/Submit.html";
+        window.location.href = "../exam2/Submit.php";
       } else {
         var minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((remaining % (1000 * 60)) / 1000);

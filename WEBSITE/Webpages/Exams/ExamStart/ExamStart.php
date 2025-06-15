@@ -1,3 +1,7 @@
+<?php
+	include '../db.php';
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +64,7 @@
       </div>
 
 
-	<a href="../Exam1/Exam1.html">
+	<a href="../Exam1/Exam1.php">
       <div
         class="start-button"
         role="button"

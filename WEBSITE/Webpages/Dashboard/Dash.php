@@ -1,3 +1,8 @@
+<?php
+  include '../Exams/db.php';
+  session_start();
+?>
+
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,9 +27,9 @@
           <div class="text-wrapper">School Year:</div>
           <div class="rectangle-3"></div>
           <a href="../Admission/form.html"><div class="nav"><div class="about highlight">Profile</div></div></a>
-          <a href="../Exams/ExamStart/ExamStart.html"><div class="about-wrapper"><div class="about highlight">Exams</div></div></a>
-          <a href="Dash.html"><div class="div-wrapper"><div class="about highlight">Dashboard</div></div></a>
-          <a href="../LogSign/log in/index.html"><div class="logout-wrapper"><div class="about highlight logout">Logout</div></div></a>
+          <a href="../Exams/ExamStart/ExamStart.php"><div class="about-wrapper"><div class="about highlight">Exams</div></div></a>
+          <a href="Dash.php"><div class="div-wrapper"><div class="about highlight">Dashboard</div></div></a>
+          <a href="../LogSign/log in/index.php"><div class="logout-wrapper"><div class="about highlight logout">Logout</div></div></a>
           <div class="text-wrapper-2">2025 - 2026</div>
           <div class="text-wrapper-4">Results:</div>
           <div class="rectangle-4"></div>

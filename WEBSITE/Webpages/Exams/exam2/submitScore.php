@@ -5,12 +5,12 @@
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
   
-  //$examinee_id = $_SESSION['examinee_id'];//
+  $examinee_id = (int)$_POST['acc_id'];
   $examScore = (int)$_POST['exam_score'];
   $examResult = $examScore >= 60 ? "passed" : "failed";
   
   
-  $saveExamQuery = "INSERT INTO exam VALUES('1', $examScore, '$examResult');";
+  $saveExamQuery = "INSERT INTO exam VALUES($examinee_id, $examScore, '$examResult');";
   $saveExamResult = mysqli_query($conn, $saveExamQuery);
   header("Location: ../../Dashboard/Dash.html");
 ?>
