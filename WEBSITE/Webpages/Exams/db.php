@@ -8,7 +8,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "polyciumuniversity";
-$termux = "/data/data/com.termux/files/usr/var/run/mysqld.sock";
+//$termux = "/data/data/com.termux/files/usr/var/run/mysqld.sock";//
 
 // remove mo yung port & termux sa parameter if di ka sa termux
 $conn = mysqli_connect($servername, $username, $password, $dbname); 
