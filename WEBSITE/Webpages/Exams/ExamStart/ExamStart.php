@@ -62,11 +62,24 @@
           <li>No dual screens/monitors</li>
         </ul>
       </div>
-
+    <?php
+      $acc_id = (int)$_SESSION['acc_id'];
+      $checkRecordQuery = "SELECT * FROM exam WHERE Account_ID = $acc_id;";
+      $checkRecordResult = mysqli_query($conn, $checkRecordQuery);
+      $hasRecord = false;
+      if(mysqli_num_rows($checkRecordResult) > 0){
+        $hasRecord = true;
+      }
+      else{
+        $hasRecord = false;
+      }
+      $disabled = $hasRecord ? "start-disabled" : "start-button";
+      $retakeText = $hasRecord ? "Wait for results" : "Start Exam";
+    ?>
 
 	<a href="../Exam1/Exam1.php">
       <div
-        class="start-button"
+        class="<?= $disabled ?>"
         role="button"
         tabindex="0"
         aria-pressed="false"
@@ -74,7 +87,7 @@
         onclick="startExam()"
         onkeydown="if(event.key==='Enter' || event.key===' ') startExam()"
       >
-        Start Exam
+        <?php echo $retakeText; ?>
       </div>
 	  </a>
     </div>

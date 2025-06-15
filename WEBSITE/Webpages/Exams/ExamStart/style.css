@@ -70,7 +70,7 @@ position: absolute;
   z-index: 3;
 }
 
-.start-button {
+.start-button, .start-disabled {
 position: absolute;
   top: 470px;
   left: 583px;
@@ -89,7 +89,15 @@ position: absolute;
   color: #000;
   user-select: none;
   z-index: 3;
+  pointer-events: auto;
   transition: background 0.3s ease;
+}
+
+.start-disabled{
+  pointer-events: none;
+  cursor: not-allowed;
+  background: #cccccc;
+  color: #666666;
 }
 
 .start-button:hover,
