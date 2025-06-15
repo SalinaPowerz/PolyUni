@@ -57,7 +57,7 @@
         <div class="form-row">
           <input type="text" name="phoneno" placeholder="Phone Number" required/>
           <input type="text" name="contactem" placeholder="Contact in case of Emergency" required/>
-        </div>s
+        </div>
         <div class="form-row1">
           <select name="course" required>
             <option class="course" disabled selected value="">--- Select Course/Program ---</option>

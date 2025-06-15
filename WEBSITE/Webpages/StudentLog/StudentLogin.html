@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -10,17 +9,17 @@
 <body>
   <div class="STUDENT-PORTAL">
     <div class="div">
-      <form class="overlap-group">
+      <form method="POST" action="verify.php" class="overlap-group">
         <img class="full" src="../../Images/new.png" alt="Logo" />
         <div class="text-wrapper">Student Portal</div>
 
         <label class="text-wrapper-2" for="student-number">Student Number</label>
-        <input class="rectangle" id="student-number" type="text" placeholder="Enter student number" />
+        <input class="rectangle" id="student-number" type="text" placeholder="Enter student number" name="StuNum" />
 		
 		<div class="input-spacing"></div>
 
         <label class="text-wrapper-3" for="password">Password</label>
-        <input class="rectangle-2" id="password" type="password" placeholder="Enter password" />
+        <input class="rectangle-2" id="password" type="password" placeholder="Enter password" name="Pass" />
 
         <label class="show-password">
           <input type="checkbox" id="show-password" onchange="togglePassword()" />
