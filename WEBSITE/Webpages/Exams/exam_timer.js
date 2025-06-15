@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   var TIMER_KEY = "countdown_timer_start";
-  var TIMER_DURATION = 1 * 60 * 1000;
+  var TIMER_DURATION = 1 * 20 * 1000;
 
   function startOrResumeTimer() {
     var startTime = localStorage.getItem(TIMER_KEY);
@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
           showMyAnswers2();
         }
 
-        window.location.href = "exam2/Submit.php";
+        window.location.href = "/Submit.php";
       } else {
         var minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((remaining % (1000 * 60)) / 1000);
