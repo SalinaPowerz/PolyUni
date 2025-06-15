@@ -43,7 +43,7 @@
             $password = $_POST['password'];
             $checkExisting = "SELECT * FROM account WHERE Email = '$email' AND Password = '$password';";
             $checkExistResult = mysqli_query($conn, $checkExisting);
-            if(mysqli_num_rows(!$checkExistResult)){
+            if(mysqli_num_rows($checkExistResult) == 0){
               header("Location: ../log in/index.php");
               exit();
             }
