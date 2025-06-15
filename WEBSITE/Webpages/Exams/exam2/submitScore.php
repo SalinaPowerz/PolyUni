@@ -5,7 +5,7 @@
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
   
-  $examinee_id = (int)$_POST['acc_id'];
+  $examinee_id = (int)$_SESSION['acc_id'];
   $examScore = (int)$_POST['exam_score'];
   $examResult = $examScore >= 60 ? "passed" : "failed";
   
