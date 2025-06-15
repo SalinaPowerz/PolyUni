@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
+  <div id="page1"></div>
   <div class="navbar" style="width: 100%; height: 60px; background-color: #32508F; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; box-sizing: border-box; z-index: 999;">
     <div style="display: flex; align-items: center;">
       <img src="../../../Images/new.png" width="50px" alt="Logo" style="vertical-align: middle; margin-right: 10px;" />
@@ -423,13 +423,10 @@
   
   <a href="../exam2/exam2.html">
   <div style="text-align: center; margin-top: 50px; margin-left: 600px;">
-    <button class="next-button" id="next-btn">Next</button>
+    <button class="next-button" id="next-btn" onclick="showMyAnswers1()">Next</button>
   </div>
   </a>
 </div>
 <script src="../exam_timer.js"></script>
-<script>
-  startOrResumeTimer();
-</script>
 </body>
 </html>
