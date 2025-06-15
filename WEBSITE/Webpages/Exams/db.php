@@ -13,11 +13,11 @@ $termux = "/data/data/com.termux/files/usr/var/run/mysqld.sock";
 $conn = mysqli_connect($servername, $username, $password, $dbname, 3306, $termux); 
 
 if(!$conn) {
-    echo "ayaw";
+   // echo "ayaw";//
     $db_status = "fail";
     
 } else {
-    echo "all goods";
+   // echo "all goods";//
     $db_status = "success";
     
 }
