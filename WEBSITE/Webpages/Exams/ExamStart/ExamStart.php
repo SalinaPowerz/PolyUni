@@ -71,7 +71,7 @@
         $hasRecord = true;
       }
       else{
-        $hasRecord = false;
+        $hasRecord = true;
       }
       $disabled = $hasRecord ? "start-disabled" : "start-button";
       $retakeText = $hasRecord ? "Wait for results" : "Start Exam";
