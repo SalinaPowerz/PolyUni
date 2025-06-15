@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
           showMyAnswers2();
         }
 
-        window.location.href = "/Submit.php";
+        window.location.href = "PolyUni/WEBSITE/Webpages/Exams/exam2/Submit.html";
       } else {
         var minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((remaining % (1000 * 60)) / 1000);
