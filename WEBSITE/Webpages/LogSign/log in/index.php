@@ -22,7 +22,7 @@
   <nav style="display: flex; gap: 12px; font-family: Helvetica; color: #FFFFFF; margin-right: 30px;">
     <a class="navigation" style="font-size: 17px; color: #FFFFFF; text-decoration: none; padding: 4px 10px;" href="../../HomePage/main.html">ABOUT</a>
     <a class="navigation" style="font-size: 17px; color: #FFFFFF; text-decoration: none; padding: 4px 10px;" href="../../Academics/Academics.html">ACADEMICS</a>
-    <a class="navigation" style="font-size: 17px; color: #FFFFFF; text-decoration: none; padding: 4px 10px;" href="index.html">ADMISSION</a>
+    <a class="navigation" style="font-size: 17px; color: #FFFFFF; text-decoration: none; padding: 4px 10px;" href="index.php">ADMISSION</a>
     <a class="navigation" style="font-size: 17px; color: #FFFFFF; text-decoration: none; padding: 4px 10px;" href="../../StudentLog/StudentLogin.html">STUDENT PORTAL</a>
   </nav>
 </div>
@@ -62,7 +62,7 @@
 
         <div class="register-link">
           Don’t have an account yet? <br>
-		  <a href="../sign up/index1.html">Register Here.</a>
+		  <a href="../sign up/index1.php">Register Here.</a>
         </div>
       </div>
     </div>

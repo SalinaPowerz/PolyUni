@@ -14,7 +14,7 @@
 <div style="position: fixed; width: 100%; height: 60px; background-color: #32508F; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; box-sizing: border-box;" id="Navigation_bar">
   <div style="display: flex; align-items: center; z-index: 1000;">
       <img src="../../../Images/new.png" width="50px" alt="Logo" style="vertical-align: middle; margin-right: 10px;" />
-    <span style="font-size: 30px; color: #FFFFFF; ">POLYCIUM UNIVERSITY</span>
+    <span style="font-size: 30px; color: #FFFFFF; font-family: Times New Roman; ">POLYCIUM UNIVERSITY</span>
   </div>
 
   <nav style="display: flex; gap: 12px; font-family: Helvetica; color: #FFFFFF; margin-right: 30px;">
@@ -37,7 +37,7 @@
       <input type="password" name="pass" placeholder="Password" class="img" required />
       <input type="password" name="repeat_pass" placeholder="Confirm Password" class="group" required />
 
-      <a href="../log in/index.html" class="back-to-log-in">‹ Back to Log In</a>
+      <a style="font-family: Times New Roman;" href="../log in/index.php" class="back-to-log-in">‹ Back to Log In</a>
 
       <button type="submit" name="submit_inps" class="yellow">
         <div class="PLACEHOLDER">SIGN UP</div>
