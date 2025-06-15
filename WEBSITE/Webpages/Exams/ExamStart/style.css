@@ -94,12 +94,6 @@ position: absolute;
   transition: background 0.3s ease;
 }
 
-.start-disabled {
-  pointer-events: none;
-  cursor: not-allowed;
-  background: #cccccc;
-  color: #666666;
-}
 
 .start-button:hover,
 .start-button:focus {
@@ -190,4 +184,11 @@ position: absolute;
     margin: 20px auto 40px;
     font-size: 18px;
   }
+  
+  .start-disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background: #cccccc;
+  color: #666666;
+}
 }
