@@ -77,10 +77,10 @@
       $retakeText = $hasRecord ? "Wait for results" : "Start Exam";
     ?>
 
-	<a href="../Exam1/Exam1.php">
-      <div
+
+      <button
         class="<?= $disabled ?>"
-        role="button"
+        type="button"
         tabindex="0"
         aria-pressed="false"
         aria-label="Start Exam"
@@ -88,8 +88,7 @@
         onkeydown="if(event.key==='Enter' || event.key===' ') startExam()"
       >
         <?php echo $retakeText; ?>
-      </div>
-	  </a>
+      </button>
     </div>
   </main>
 <footer style="	background-color:#32508F; color:white; text-align:center;"> ©2025 Polycium University All Rights Reserved.</footer>
@@ -97,6 +96,7 @@
   <script>
     function startExam() {
       alert("Exam has started! Good luck.");
+      window.location.href = "../Exam1/Exam1.php";
     }
   </script>
 </body>
