@@ -1,5 +1,5 @@
   var TIMER_KEY = "countdown_timer_start";
-  var TIMER_DURATION = 1 * 10 * 1000;
+  var TIMER_DURATION = 120 * 60 * 1000;
 
   function startOrResumeTimer() {
     var startTime = localStorage.getItem(TIMER_KEY);
