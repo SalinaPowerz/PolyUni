@@ -19,8 +19,11 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     session_start();
+	$row = $result->fetch_assoc();
     $_SESSION['student_id'] = $student_number;
-    header("Location: welcome.php");
+	$_SESSION['Email'] = $row['Email'];        
+    $_SESSION['Full_Name'] = $row['Full_Name'];
+    header("Location: sd/StuPortal.php");
     exit();
 } else {
     echo "<script>alert('Invalid Student ID or Password.'); window.history.back();</script>";
