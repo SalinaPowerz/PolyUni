@@ -66,7 +66,7 @@
       $acc_id = (int)$_SESSION['acc_id'];
       $checkRecordQuery = "SELECT * FROM exam WHERE Examinee_ID = $acc_id;";
       $checkRecordResult = mysqli_query($conn, $checkRecordQuery);
-      $hasRecord = false;
+      $hasRecord = true;
       if(mysqli_num_rows($checkRecordResult) > 0){
         $hasRecord = true;
       }

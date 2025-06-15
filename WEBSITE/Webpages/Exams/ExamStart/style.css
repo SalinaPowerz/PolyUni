@@ -175,7 +175,7 @@ position: absolute;
     text-align: center;
   }
 
-  .start-button {
+  .start-button, .start-disabled {
     position: static;
     margin: 20px auto;
     width: 90%;
