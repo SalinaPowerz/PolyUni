@@ -9,7 +9,7 @@
 	
 </head>
 <body>
-	<form method="POST" action="new_connect.php">
+	<form method="POST" action="adm.php">
 	<div class="container">
 		<div class="sidebar">
 			<ul>
@@ -43,21 +43,36 @@
 					</thead>
 					<tbody>
 						<?php
+
+						$host = "localhost";
+						$user = "root";
+						$pass = "";
+						$db = "polyciumuniversity";
+
+						$conn = new mysqli($host,$user,$pass,$db);
+						if($conn->connect_error) {
+        				die ("Connection Failed : ".$conn->connect_error);	
+						}
 						$sql = "SELECT * FROM admission_form";
 						$result = $conn->query($sql);
 
 						if(!$result){
     					die("Invalid query: ".$conn->error);
-						
+						}
 						while ($row = $result->fetch_assoc()){
-							echo "<tr>
+						echo "<tr>
 							<td>$row[Ad_ID]</td>
 							<td>$row[Course_ID]</td>
-							<td>$row[First_Name]</td>
-							<td>$row[Last_Name]</td>
+							<td>$row[FirstName]</td>
+							<td>$row[LastName]</td>
 							<td>$row[Email]</td>
-							<td>$row[Phone_num]</td>";
-						}
+							<td>$row[Phone_num]</td>
+							<td>
+								<a href='#'><i class='fas fa-eye'></i></a>
+								&nbsp;|&nbsp;
+								<a href='#'><i class='fas fa-trash'></i></a>
+							</td>";
+
 						}
 						?>
 					</tbody>
