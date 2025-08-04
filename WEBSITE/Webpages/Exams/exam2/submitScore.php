@@ -11,6 +11,5 @@
   
   
   $saveExamQuery = "INSERT INTO exam VALUES($examinee_id, $examScore, '$examResult');";
-  $saveExamResult = mysqli_query($conn, $saveExamQuery);
-  header("Location: ../../Dashboard/Dash.php");
+  header("Location: ../Exam1/Exam1.php");
 ?>

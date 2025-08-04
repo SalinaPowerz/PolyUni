@@ -26,7 +26,7 @@
           <div class="rectangle-2"></div>
           <div class="text-wrapper">School Year:</div>
           <div class="rectangle-3"></div>
-          <a href="../Admission/form.html"><div class="nav"><div class="about highlight">Profile</div></div></a>
+          <a href="../Admission/form.php"><div class="nav"><div class="about highlight">Profile</div></div></a>
           <a href="../Exams/ExamStart/ExamStart.php"><div class="about-wrapper"><div class="about highlight">Exams</div></div></a>
           <a href="Dash.php"><div class="div-wrapper"><div class="about highlight">Dashboard</div></div></a>
           <a href="../LogSign/log in/index.php"><div class="logout-wrapper"><div class="about highlight logout">Logout</div></div></a>

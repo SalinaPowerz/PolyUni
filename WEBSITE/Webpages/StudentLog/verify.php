@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
     $_SESSION['student_id'] = $student_number;
 	$_SESSION['Email'] = $row['Email'];        
     $_SESSION['Full_Name'] = $row['Full_Name'];
-    header("Location: sd/StuPortal.php");
+    header("Location: portal/StuPortal.php");
     exit();
 } else {
     echo "<script>alert('Invalid Student ID or Password.'); window.history.back();</script>";

@@ -1,6 +1,6 @@
 <?php
-	include '../db.php';
 	session_start();
+	include '../db.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,18 +63,8 @@
         </ul>
       </div>
     <?php
-      $acc_id = $_SESSION['acc_id'];
-      $checkRecordQuery = "SELECT * FROM exam WHERE Examinee_ID = '$acc_id';";
-      $checkRecordResult = mysqli_query($conn, $checkRecordQuery);
-      $hasRecord = false;
-      if(mysqli_num_rows($checkRecordResult) > 0){
-        $hasRecord = true;
-      }
-      else{
-        $hasRecord = false;
-      }
-      $disabled = $hasRecord ? "start-disabled" : "start-button";
-      $retakeText = $hasRecord ? "Wait for results" : "Start Exam";
+      $disabled = "start-button";
+     
     ?>
 
 
@@ -87,7 +77,7 @@
         onclick="startExam()"
         onkeydown="if(event.key==='Enter' || event.key===' ') startExam()"
       >
-        <?php echo $retakeText; ?>
+        <?php echo "Start Exam"; ?>
       </button>
     </div>
   </main>
