@@ -1,4 +1,11 @@
-<?php session_start()?>
+<?php
+session_start();
+$register_error = '';
+if (isset($_SESSION['register_error'])) {
+    $register_error = $_SESSION['register_error'];
+    unset($_SESSION['register_error']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,6 +16,13 @@
     <link rel="stylesheet" href="style.css" />	
   </head>
   <body>
+    <?php if (!empty($register_error)): ?>
+    <script>
+    window.onload = function() {
+        alert("<?php echo addslashes($register_error); ?>");
+    };
+    </script>
+    <?php endif; ?>
     <div class="SIGNUP">
       <div class="div">
 <div style="position: fixed; width: 100%; height: 60px; background-color: #32508F; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; box-sizing: border-box;" id="Navigation_bar">
@@ -32,24 +46,114 @@
       <div class="text-wrapper-2">SIGN UP</div>
     </div>
 
-    <form method="POST" action="new_connect.php">
-      <input type="email" name="email" placeholder="Email" class="group-2" required />
-      <input type="password" name="pass" placeholder="Password" class="img" required />
-      <input type="password" name="repeat_pass" placeholder="Confirm Password" class="group" required />
-
-      <a style="font-family: Times New Roman;" href="../log in/index.php" class="back-to-log-in">‹ Back to Log In</a>
-
-      <button type="submit" name="submit_inps" class="yellow">
-        <div class="PLACEHOLDER">SIGN UP</div>
-      </button>
-    </form>
+<form method="POST" action="new_connect.php" id="signup-form" autocomplete="off">
+  <div class="form-group email-group">
+    <input type="text" name="email" placeholder="Email" class="group-2" required autocomplete="off" />
+    <span id="email-error" style="color: red; font-size: 14px; display: block; margin-bottom: 4px; margin-left: 35px;"></span>
   </div>
+  <div class="form-group password-group" style="position: relative;">
+  <input type="password" id="pass" name="pass" placeholder="Password" class="img" required autocomplete="off" style="padding-right:40px;" />
 
-  <p class="text-wrapper">Polycium University © 2024 All Rights Reserved.</p>
+  <!-- Eye icon moved here -->
+  <button type="button" class="eye-btn" id="toggleEye" aria-label="Toggle password visibility"
+    style="position:absolute; top:8px; right:35px; background:none; border:none; cursor:pointer;">
+    <!-- open-eye svg -->
+    <svg id="eyeOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+      stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"></path>
+      <circle cx="12" cy="12" r="3"></circle>
+    </svg>
+    <!-- closed eye hidden by default -->
+    <svg id="eyeClosed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+      stroke-linecap="round" stroke-linejoin="round" width="24" height="24" style="display:none">
+      <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a20.6 20.6 0 0 1 5.06-6.14"></path>
+      <path d="M1 1l22 22"></path>
+    </svg>
+  </button>
 </div>
 
+<!-- Confirm Password stays as-is -->
+<div class="form-group confirm-group">
+  <input type="password" id="repeat_pass" name="repeat_pass" placeholder="Confirm Password" class="group" required autocomplete="off" style="padding-right:40px; margin-top:8px;" />
+</div>
+  <div class="form-group error-group">
+    <span id="error-message" style="color: red; font-size: 14px; display: block; margin-bottom: 4px; margin-left: 35px;"></span>
+  </div>
+  <div class="form-group back-group">
+    <a style="font-family: Times New Roman;" href="../log in/index.php" class="back-to-log-in">‹ Back to Log In</a>
+  </div>
+  <div class="form-group signup-group">
+    <button type="submit" name="submit_inps" class="yellow">
+      <div class="PLACEHOLDER">SIGN UP</div>
+    </button>
+  </div>
+</form>
+<script>
+document.getElementById('signup-form').onsubmit = function(event) {
+  var emailInput = document.querySelector('input[name="email"]');
+  var passInput = document.getElementById('pass');
+  var repeatPassInput = document.getElementById('repeat_pass');
+  var email = emailInput.value;
+  var pass = passInput.value;
+  var repeatPass = repeatPassInput.value;
+  var errorMsg = document.getElementById('error-message');
+  var emailError = document.getElementById('email-error');
 
-      </div>
-    </div>
-  </body>
+  // Reset borders and error messages
+  emailInput.style.border = '';
+  passInput.style.border = '';
+  repeatPassInput.style.border = '';
+  emailError.textContent = '';
+  errorMsg.textContent = '';
+
+  // Email validation
+  if (!email.includes('@')) {
+    emailError.textContent = "Invalid email address.";
+    emailInput.style.border = '2px solid red';
+    event.preventDefault();
+    return false;
+  }
+
+  // Password length validation
+  if (pass.length < 8) {
+    errorMsg.textContent = "Password must be at least 8 characters long.";
+    passInput.style.border = '2px solid red';
+    event.preventDefault();
+    return false;
+  }
+
+  // Password match validation
+  if (pass !== repeatPass) {
+    errorMsg.textContent = "Passwords do not match.";
+    passInput.style.border = '2px solid red';
+    repeatPassInput.style.border = '2px solid red';
+    event.preventDefault();
+    return false;
+  }
+
+  // If all is good, clear error
+  errorMsg.textContent = "";
+  return true;
+};
+
+// Show/Hide Passwords with SVG toggle
+document.getElementById('toggleEye').addEventListener('click', function() {
+  var passInput = document.getElementById('pass');
+  var repeatPassInput = document.getElementById('repeat_pass');
+  var eyeOpen = document.getElementById('eyeOpen');
+  var eyeClosed = document.getElementById('eyeClosed');
+  var isHidden = passInput.type === 'password';
+
+  passInput.type = isHidden ? 'text' : 'password';
+  repeatPassInput.type = isHidden ? 'text' : 'password';
+  eyeOpen.style.display = isHidden ? 'none' : '';
+  eyeClosed.style.display = isHidden ? '' : 'none';
+});
+</script>
+  </div>
+  </div>
+  <footer>
+    Polycium University © 2024 All Rights Reserved.
+  </footer>
+</body>
 </html>

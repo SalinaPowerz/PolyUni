@@ -56,8 +56,6 @@
               header("Location: ../../Dashboard/Dash.php");
             }
           }
-        
-        
         ?>
 
         <div class="register-link">

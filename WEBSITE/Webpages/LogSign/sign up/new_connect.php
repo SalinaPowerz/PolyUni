@@ -2,20 +2,37 @@
 session_start();
 require_once 'connect.php';
 
-if (isset($_POST['submit_inps'])){    
+if (isset($_POST['submit_inps'])) {
     $email = $_POST['email'];
-    $repeat_pass = ($_POST['repeat_pass']);
+    $password = $_POST['pass'];
 
+    // Check if email exists
+    $stmt = $conn->prepare("SELECT Email FROM account WHERE Email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+    $email_exists = $stmt->num_rows > 0;
+    $stmt->close();
 
-    $check_em = $conn->query("SELECT Email FROM account WHERE Email = '$email'");
-    if($check_em->num_rows > 0){
+    
+
+    if ($email_exists) {
         $_SESSION['register_error'] = 'Email is already registered!';
-        $_SESSION['active_form'] = 'submit_inps';
-    } else {
-        $conn->query("INSERT INTO account (Account_ID, Email, Password) VALUES ('','$email','$repeat_pass')");
-    }   
+        header("Location: index1.php");
+        exit();
+    }
 
-    header("Location: index1.php");
+    // Hash the password
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // Insert new user
+    $stmt = $conn->prepare("INSERT INTO account (Email, Password) VALUES (?, ?)");
+    $stmt->bind_param("ss", $email, $hashedPassword);
+    $stmt->execute();
+    $stmt->close();
+
+    // Redirect to login page after successful signup
+    header("Location: ../log in/index.php");
     exit();
 }
 ?>
