@@ -1,11 +1,6 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "polyciumuniversity";
-
-$conn = new mysqli($host,$user,$pass,$db);
-if($conn->connect_error) {
-        die ("Connection Failed : ".$conn->connect_error);
+$conn = new mysqli('localhost', 'root', '', 'polyciumuniversity');
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>
