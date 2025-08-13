@@ -6,10 +6,22 @@ body {
   background-repeat: no-repeat;
   position: relative;
 }
+        
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(8px);
+  z-index: -1;
+}
 
 .navigation:hover{
-	color: white;
-	font-weight: bold;
+  color: white;
+  font-weight: bold;
 }
 
 .container {
@@ -47,15 +59,12 @@ body {
   margin: 10px 0 20px;
 }
 
-.login-box label {
-  display: block;
-  text-align: left;
-  margin: 10px 0 5px;
-  font-size: 16px;
-  color: #000;
+.form-group {
+    position: relative;
+    margin-bottom: 15px;
 }
 
-.login-box input {
+.login-box .input-field {
   width: 100%;
   padding: 15px;
   border-radius: 15px;
@@ -105,4 +114,73 @@ button.login-btn {
 
 button.login-btn:hover {
   background-color: #d4a820;
+}
+
+.error-text {
+  color: red;
+  font-size: 12px;
+  text-align: left;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  display: block;
+  min-height: 15px;
+}
+
+.input-field.error-border {
+  border-color: red !important;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 15px;
+  top: 35%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+  color: #555;
+}
+
+.eye-icon:hover {
+  color: #000;
+}
+
+#Navigation_bar {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  background-color: #32508F;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 17px;
+  box-sizing: border-box;
+}
+
+.navbar-logo-container {
+  display: flex;
+  align-items: center;
+}
+.navbar-logo-container img {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.navbar-logo-container span {
+  font-size: 30px;
+  color: #FFFFFF;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 12px;
+  font-family: Helvetica;
+  color: #FFFFFF;
+  margin-right: 30px;
+}
+
+.navbar-links a {
+  font-size: 17px;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 4px 10px;
 }

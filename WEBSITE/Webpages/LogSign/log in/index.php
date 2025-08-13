@@ -1,6 +1,51 @@
 <?php
-  include '../../Exams/db.php';
-  session_start();
+include '../../Exams/db.php';
+session_start();
+
+$email_error = "";
+$password_error = "";
+$email = "";
+
+if(isset($_POST['login_btn'])){
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    // Corrected to use 'pass' to match the HTML input name from your provided code
+    $password = $_POST['pass'];
+
+    $has_error = false;
+    if (empty($email)) {
+        $email_error = "Email is required.";
+        $has_error = true;
+    }
+    if (empty($password)) {
+        $password_error = "Password is required.";
+        $has_error = true;
+    }
+
+    if (!$has_error) {
+        $stmt = $conn->prepare("SELECT Account_ID, Password FROM account WHERE Email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 1) {
+            $user = $result->fetch_assoc();
+            $hashed_password = $user['Password'];
+
+            if (password_verify($password, $hashed_password)) {
+                $_SESSION['acc_id'] = $user['Account_ID'];
+                $_SESSION['email'] = $user['Email'];
+                header("Location: ../../Admission/Form.php");
+                exit();
+            } else {
+                $password_error = "Incorrect Password";
+            }
+        } else {
+            $email_error = "Invalid Email";
+        }
+        
+        $stmt->close();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +53,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Polycium University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -31,42 +77,88 @@
       <div class="login-box">
         <img src="../../../Images/new.png" alt="University Logo" class="logo"/>
         <h2>LOG IN</h2>
+        
 
         <form id="login-form" action="" method="POST">
-    			<input type="email" id="email" name="email" placeholder="Email" required class="input-field" />
-    			<input type="password" id="password" name="password" placeholder="Enter your password" required class="input-field" />	
-          <button class="login-btn" name="login_btn" type="submit">LOGIN</button>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email" value="<?= htmlspecialchars($email); ?>" required class="input-field" />
+                <div class="error-text" id="emailError"><?= htmlspecialchars($email_error) ?></div>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="pass" placeholder="Enter your password" required class="input-field" /> 
+                <i class="fa-solid fa-eye eye-icon" id="togglePassword"></i>
+                <div class="error-text" id="passwordError"><?= htmlspecialchars($password_error) ?></div>
+            </div>
+            <div class="forgot-password-link">
+                <a href="../forgot_password/index.php">Forgot Password?</a>
+            </div>
+            <button class="login-btn" name="login_btn" type="submit">LOGIN</button>
         </form>
-        <?php
-          if(isset($_POST['login_btn'])){
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $checkExisting = "SELECT * FROM account WHERE Email = '$email' AND Password = '$password';";
-            $checkExistResult = mysqli_query($conn, $checkExisting);
-            if(mysqli_num_rows($checkExistResult) == 0){
-              header("Location: ../log in/index.php");
-              exit();
-            }
-            else{
-              $getUserData = "SELECT * FROM account WHERE Email = '$email';";
-              $userDataResult = mysqli_query($conn, $getUserData);
-              $userDataRow = mysqli_fetch_assoc($userDataResult);
-              $_SESSION['acc_id'] = $userDataRow['Account_ID'];
-              $_SESSION['email'] = $userDataRow['Email'];
-              header("Location: ../../Dashboard/Dash.php");
-            }
-          }
-        ?>
 
         <div class="register-link">
           Don’t have an account yet? <br>
-		  <a href="../sign up/index1.php">Register Here.</a>
+          <a href="../sign up/index1.php">Register Here.</a>
         </div>
       </div>
     </div>
 
     <div class="footer">
-      Polycium University © 2024 All Rights Served .
+      Polycium University © 2024 All Rights Reserved.
     </div>
-  </body>
+
+    <script>
+      const togglePassword = document.getElementById('togglePassword');
+      const passwordField = document.getElementById('password');
+
+      if(togglePassword) {
+          togglePassword.addEventListener('click', function () {
+              const type = passwordField.type === 'password' ? 'text' : 'password';
+              passwordField.type = type;
+              this.classList.toggle('fa-eye');
+              this.classList.toggle('fa-eye-slash');
+          });
+      }
+
+      document.getElementById('login-form').addEventListener('submit', function(e) {
+          let valid = true;
+          const emailInput = document.getElementById('email');
+          const passwordInput = document.getElementById('password');
+          const emailError = document.getElementById('emailError');
+          const passwordError = document.getElementById('passwordError');
+
+          emailError.textContent = "";
+          passwordError.textContent = "";
+          emailInput.classList.remove('error-border');
+          passwordInput.classList.remove('error-border');
+
+          const email = emailInput.value.trim();
+          const password = passwordInput.value.trim();
+          
+          const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+          if (email === "") {
+              emailError.textContent = "Email is required.";
+              emailInput.classList.add('error-border');
+              valid = false;
+          } else if (!emailPattern.test(email)) {
+              emailError.textContent = "Please enter a valid email address.";
+              emailInput.classList.add('error-border');
+              valid = false;
+          }
+
+          if (password === "") {
+              passwordError.textContent = "Password is required.";
+              passwordInput.classList.add('error-border');
+              valid = false;
+          } else if (password.length < 4) {
+              passwordError.textContent = "Password must be at least 4 characters.";
+              passwordInput.classList.add('error-border');
+              valid = false;
+          }
+
+          if (!valid) {
+              e.preventDefault();
+          }
+      });
+    </script>
+</body>
 </html>

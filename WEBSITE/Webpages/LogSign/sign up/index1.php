@@ -115,8 +115,8 @@ document.getElementById('signup-form').onsubmit = function(event) {
   }
 
   // Password length validation
-  if (pass.length < 10) {
-    errorMsg.textContent = "Password must be at least 10 characters long.";
+  if (pass.length < 8) {
+    errorMsg.textContent = "Password must be at least 8 characters long.";
     passInput.style.border = '2px solid red';
     event.preventDefault();
     return false;
