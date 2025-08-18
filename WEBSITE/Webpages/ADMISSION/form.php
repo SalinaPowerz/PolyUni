@@ -4,13 +4,13 @@ require_once 'connect.php'; // Include database connection
 
 // Allow changing the Account_ID in the session
 if (isset($_POST['change_account_id'])) {
-    $_SESSION['Account_ID'] = $_POST['new_account_id'];
+    $_SESSION['acc_id'] = $_POST['new_account_id']; // Use 'acc_id' to match the session variable in index.php
     header("Location: form.php"); // Refresh the page to load the new Account_ID's data
     exit();
 }
 
 // Get the current Account_ID from the session
-$account_id = $_SESSION['Account_ID'] ?? null;
+$account_id = $_SESSION['acc_id'] ?? null; // Use 'acc_id' here as well
 
 // Debug: Check if Account_ID is set
 if (!$account_id) {
