@@ -1,9 +1,17 @@
 <?php
 session_start();
 $register_error = '';
+$register_success = ''; // Add this line for success messages
+
 if (isset($_SESSION['register_error'])) {
     $register_error = $_SESSION['register_error'];
     unset($_SESSION['register_error']);
+}
+
+// Add this block for success messages
+if (isset($_SESSION['register_success'])) {
+    $register_success = $_SESSION['register_success'];
+    unset($_SESSION['register_success']);
 }
 ?>
 <!DOCTYPE html>
@@ -23,6 +31,20 @@ if (isset($_SESSION['register_error'])) {
     };
     </script>
     <?php endif; ?>
+    
+    <!-- Add this block for success messages -->
+    <?php if (!empty($register_success)): ?>
+    <script>
+    window.onload = function() {
+        alert("<?php echo addslashes($register_success); ?>");
+        // Redirect to login page after showing success message
+        setTimeout(function() {
+            window.location.href = "../log in/index.php";
+        }, 2000);
+    };
+    </script>
+    <?php endif; ?>
+    
     <div class="SIGNUP">
       <div class="div">
 <div style="position: fixed; width: 100%; height: 60px; background-color: #32508F; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; box-sizing: border-box;" id="Navigation_bar">

@@ -8,6 +8,7 @@ $email = "";
 
 if(isset($_POST['login_btn'])){
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    // Corrected to use 'pass' to match the HTML input name from your provided code
     $password = $_POST['pass'];
 
     $has_error = false;
