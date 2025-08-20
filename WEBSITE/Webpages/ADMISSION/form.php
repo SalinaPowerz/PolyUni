@@ -2,42 +2,23 @@
 session_start();
 require_once 'connect.php'; // Include database connection
 
-// Allow changing the Account_ID in the session
-if (isset($_POST['change_account_id'])) {
-    $_SESSION['acc_id'] = $_POST['new_account_id']; // Use 'acc_id' to match the session variable in index.php
-    header("Location: form.php"); // Refresh the page to load the new Account_ID's data
-    exit();
-}
-
 // Get the current Account_ID from the session
-$account_id = $_SESSION['acc_id'] ?? null; // Use 'acc_id' here as well
+$account_id = $_SESSION['acc_id'] ?? null;
 
-// Debug: Check if Account_ID is set
+// Redirect if Account_ID is not set
 if (!$account_id) {
-    echo "No Account_ID found in session.<br>";
-    // Show the Account_ID change form so you can set it manually
-    ?>
-    <div style="margin: 20px;">
-      <form method="POST" action="">
-        <label for="new_account_id">Change Account_ID:</label>
-        <input type="text" id="new_account_id" name="new_account_id" placeholder="Enter new Account_ID" required />
-        <button type="submit" name="change_account_id">Change</button>
-      </form>
-    </div>
-    <?php
+    header("Location: ../../LogSign/log in/index.php");
     exit();
-} else {
-    echo "Account_ID: " . $account_id . "<br>";
 }
 
-// Retrieve saved form data from the database
+// Check if form exists to determine if this is a new profile or update
 $query = "SELECT * FROM admission_form WHERE Account_ID = '$account_id'";
 $result = $conn->query($query);
+$is_existing_profile = ($result && $result->num_rows > 0);
 
-if ($result && $result->num_rows > 0) {
+if ($is_existing_profile) {
     $form_data = $result->fetch_assoc();
 } else {
-    // If no data exists for the current user, reset the form
     $form_data = [];
 }
 
@@ -76,6 +57,20 @@ function getOriginalFileName($filePath) {
       flex-direction: column;
       gap: 5px;
     }
+    .required-field::after {
+      content: " *";
+      color: red;
+    }
+    .current-file {
+      color: #666;
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .file-error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -84,15 +79,6 @@ function getOriginalFileName($filePath) {
       <img src="../../Images/new.png" width="50px" alt="Logo" style="vertical-align: middle; margin-right: 10px;" />
       <span style="font-size: 30px; color: #FFFFFF; font-family: s; ">POLYCIUM UNIVERSITY</span>
     </div>
-  </div>
-
-  <!-- Form to Change Account_ID -->
-  <div style="margin: 20px;">
-    <form method="POST" action="">
-      <label for="new_account_id">Change Account_ID:</label>
-      <input type="text" id="new_account_id" name="new_account_id" placeholder="Enter new Account_ID" required />
-      <button type="submit" name="change_account_id">Change</button>
-    </form>
   </div>
 
   <main>
@@ -107,12 +93,26 @@ function getOriginalFileName($filePath) {
       <form id="admissionForm" method="POST" action="new_connect.php" enctype="multipart/form-data">
         <!-- Personal Information -->
         <div class="form-row">
+          <label class="required-field">First Name</label>
+          <label class="required-field">Middle Name</label>
+        </div>
+        <div class="form-row">
           <input type="text" name="firstname" placeholder="First Name" value="<?= $form_data['FirstName'] ?? '' ?>" required />
           <input type="text" name="middlename" placeholder="Middle Name" value="<?= $form_data['MiddleName'] ?? '' ?>" required />
+        </div>
+        
+        <div class="form-row">
+          <label class="required-field">Last Name</label>
+          <label>Suffix</label>
         </div>
         <div class="form-row">
           <input type="text" name="lastname" placeholder="Last Name" value="<?= $form_data['LastName'] ?? '' ?>" required />
           <input type="text" name="suffix" placeholder="Suffix" value="<?= $form_data['Suffix'] ?? '' ?>" />
+        </div>
+        
+        <div class="form-row">
+          <label class="required-field">Date of Birth</label>
+          <label class="required-field">Gender</label>
         </div>
         <div class="form-row">
           <input type="date" id="dob" name="dob" placeholder="Date of Birth" value="<?= $form_data['BirthDate'] ?? '' ?>" required />
@@ -125,12 +125,25 @@ function getOriginalFileName($filePath) {
 
         <!-- Address -->
         <div class="form-row">
+          <label class="required-field">Block/Lot</label>
+          <label class="required-field">Street</label>
+        </div>
+        <div class="form-row">
           <input type="text" name="blocklot" placeholder="Block/Lot" value="<?= $form_data['BlockLot'] ?? '' ?>" required />
           <input type="text" name="street" placeholder="Street" value="<?= $form_data['Street'] ?? '' ?>" required />
+        </div>
+        
+        <div class="form-row">
+          <label class="required-field">Barangay</label>
+          <label class="required-field">City</label>
         </div>
         <div class="form-row">
           <input type="text" name="barangay" placeholder="Barangay" value="<?= $form_data['Barangay'] ?? '' ?>" required />
           <input type="text" name="city" placeholder="City" value="<?= $form_data['City'] ?? '' ?>" required />
+        </div>
+        
+        <div class="form-row">
+          <label class="required-field">Province</label>
         </div>
         <div class="form-row">
           <input type="text" name="province" placeholder="Province" value="<?= $form_data['Province'] ?? '' ?>" required />
@@ -138,26 +151,45 @@ function getOriginalFileName($filePath) {
 
         <!-- Family Information -->
         <div class="form-row">
-          <input type="text" name="fathername" placeholder="Father’s Name" value="<?= $form_data['Fathers_Name'] ?? '' ?>" required />
-          <input type="text" name="mothername" placeholder="Mother’s Maiden Name" value="<?= $form_data['Mothers_Name'] ?? '' ?>" required />
+          <label class="required-field">Father's Name</label>
+          <label class="required-field">Mother's Maiden Name</label>
         </div>
         <div class="form-row">
-          <input type="text" name="guardianname" placeholder="Guardian’s Name" value="<?= $form_data['Guardian'] ?? '' ?>" required />
+          <input type="text" name="fathername" placeholder="Father's Name" value="<?= $form_data['Fathers_Name'] ?? '' ?>" required />
+          <input type="text" name="mothername" placeholder="Mother's Maiden Name" value="<?= $form_data['Mothers_Name'] ?? '' ?>" required />
+        </div>
+        
+        <div class="form-row">
+          <label class="required-field">Guardian's Name</label>
+          <label class="required-field">Email</label>
+        </div>
+        <div class="form-row">
+          <input type="text" name="guardianname" placeholder="Guardian's Name" value="<?= $form_data['Guardian'] ?? '' ?>" required />
           <input type="email" id="email" name="email" placeholder="Email" value="<?= $form_data['Email'] ?? '' ?>" required />
         </div>
 
         <!-- Religion -->
+        <div class="form-row">
+          <label class="required-field">Religion</label>
+        </div>
         <div class="form-row">
           <input type="text" name="religion" placeholder="Religion" value="<?= $form_data['Religion'] ?? '' ?>" required />
         </div>
 
         <!-- Contact Information -->
         <div class="form-row">
+          <label class="required-field">Phone Number</label>
+          <label class="required-field">Emergency Contact</label>
+        </div>
+        <div class="form-row">
           <input type="text" id="phoneno" name="phoneno" placeholder="Phone Number" maxlength="11" value="<?= $form_data['Phone_num'] ?? '' ?>" required />
           <input type="text" id="contactem" name="contactem" placeholder="Contact in case of Emergency" maxlength="11" value="<?= $form_data['Contact_num'] ?? '' ?>" required />
         </div>
 
         <!-- Course Selection -->
+        <div class="form-row">
+          <label class="required-field">Course</label>
+        </div>
         <div class="form-row">
           <select name="course" required>
             <option disabled <?= empty($form_data['Course_ID']) ? 'selected' : '' ?> value="">--- Select Course ---</option>
@@ -171,28 +203,33 @@ function getOriginalFileName($filePath) {
 
         <!-- File Uploads -->
         <div class="file-upload">
-          <label>Upload Report Card (Image):</label>
-          <input type="file" id="report_card" name="report_card" accept="image/*" />
+          <label class="required-field">Upload Report Card (Image)</label>
+          <input type="file" id="report_card" name="report_card" accept="image/*" <?= !$is_existing_profile ? 'required' : '' ?> />
           <?php if (!empty($form_data['ReportCard'])): ?>
-            <p>Current File: <?= getOriginalFileName($form_data['ReportCard']) ?></p>
+            <p class="current-file">Current File: <?= getOriginalFileName($form_data['ReportCard']) ?></p>
             <input type="hidden" name="existing_report_card" value="<?= $form_data['ReportCard'] ?>" />
           <?php endif; ?>
+          <div id="report_card_error" class="file-error"></div>
         </div>
+        
         <div class="file-upload">
-          <label>Upload Form 137 (Image):</label>
-          <input type="file" id="form_137" name="form_137" accept="image/*" />
+          <label class="required-field">Upload Form 137 (Image)</label>
+          <input type="file" id="form_137" name="form_137" accept="image/*" <?= !$is_existing_profile ? 'required' : '' ?> />
           <?php if (!empty($form_data['Form137'])): ?>
-            <p>Current File: <?= getOriginalFileName($form_data['Form137']) ?></p>
+            <p class="current-file">Current File: <?= getOriginalFileName($form_data['Form137']) ?></p>
             <input type="hidden" name="existing_form_137" value="<?= $form_data['Form137'] ?>" />
           <?php endif; ?>
+          <div id="form_137_error" class="file-error"></div>
         </div>
+        
         <div class="file-upload">
-          <label>Upload Health Records (Image):</label>
-          <input type="file" id="health_records" name="health_records" accept="image/*" />
+          <label class="required-field">Upload Health Records (Image)</label>
+          <input type="file" id="health_records" name="health_records" accept="image/*" <?= !$is_existing_profile ? 'required' : '' ?> />
           <?php if (!empty($form_data['HealthRecords'])): ?>
-            <p>Current File: <?= getOriginalFileName($form_data['HealthRecords']) ?></p>
+            <p class="current-file">Current File: <?= getOriginalFileName($form_data['HealthRecords']) ?></p>
             <input type="hidden" name="existing_health_records" value="<?= $form_data['HealthRecords'] ?>" />
           <?php endif; ?>
+          <div id="health_records_error" class="file-error"></div>
         </div>
 
         <!-- Submit -->
@@ -213,52 +250,96 @@ function getOriginalFileName($filePath) {
     this.value = this.value.replace(/[^0-9]/g, '');
   });
 
+  // Function to check for duplicate file names
+  function checkDuplicateFiles() {
+    const files = {
+      report_card: document.getElementById('report_card').files[0],
+      form_137: document.getElementById('form_137').files[0],
+      health_records: document.getElementById('health_records').files[0]
+    };
+    
+    const fileNames = {};
+    let hasDuplicates = false;
+    
+    // Clear previous error messages
+    document.querySelectorAll('.file-error').forEach(el => el.textContent = '');
+    
+    // Check for duplicates among newly uploaded files
+    for (const [field, file] of Object.entries(files)) {
+      if (file) {
+        if (fileNames[file.name]) {
+          document.getElementById(`${field}_error`).textContent = 
+            `This file has the same name as ${fileNames[file.name]}`;
+          hasDuplicates = true;
+        } else {
+          fileNames[file.name] = field.replace('_', ' ');
+        }
+      }
+    }
+    
+    return !hasDuplicates;
+  }
+
   // Form submission validation
   document.getElementById('admissionForm').addEventListener('submit', function(event) {
-    const reportCard = document.getElementById('report_card').value;
-    const form137 = document.getElementById('form_137').value;
-    const healthRecords = document.getElementById('health_records').value;
-
-    // Check for duplicate file uploads
-    if (
-      (reportCard && form137 && reportCard === form137) ||
-      (reportCard && healthRecords && reportCard === healthRecords) ||
-      (form137 && healthRecords && form137 === healthRecords)
-    ) {
-      alert('Duplicate file detected! Please upload unique files for each field.');
-      event.preventDefault();
-      return;
+    let isValid = true;
+    
+    // Check for duplicate files
+    if (!checkDuplicateFiles()) {
+      isValid = false;
     }
-
+    
     // Validate date of birth (must be at least 16 years old)
     const dobInput = document.getElementById('dob');
     const dob = new Date(dobInput.value);
     const today = new Date();
 
-    if (isNaN(dob)) {
+    if (isNaN(dob.getTime())) {
       alert('Please enter a valid date of birth.');
       dobInput.classList.add('error-border');
-      event.preventDefault();
-      return;
-    }
-
-    let age = today.getFullYear() - dob.getFullYear();
-    const monthDiff = today.getMonth() - dob.getMonth();
-    const dayDiff = today.getDate() - dob.getDate();
-
-    // Adjust age if current date is before the birthday
-    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-      age--;
-    }
-
-    if (age < 16) {
-      alert('You must be at least 16 years old to submit this form.');
-      dobInput.classList.add('error-border');
-      event.preventDefault();
-      return;
+      isValid = false;
     } else {
-      dobInput.classList.remove('error-border');
+      let age = today.getFullYear() - dob.getFullYear();
+      const monthDiff = today.getMonth() - dob.getMonth();
+      const dayDiff = today.getDate() - dob.getDate();
+
+      // Adjust age if current date is before the birthday
+      if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        age--;
+      }
+
+      if (age < 16) {
+        alert('You must be at least 16 years old to submit this form.');
+        dobInput.classList.add('error-border');
+        isValid = false;
+      } else {
+        dobInput.classList.remove('error-border');
+      }
     }
+    
+    // For new profiles, check if at least one file is uploaded
+    const isNewProfile = <?= $is_existing_profile ? 'false' : 'true' ?>;
+    if (isNewProfile) {
+      const reportCard = document.getElementById('report_card').files.length;
+      const form137 = document.getElementById('form_137').files.length;
+      const healthRecords = document.getElementById('health_records').files.length;
+      
+      if (!reportCard && !form137 && !healthRecords) {
+        alert('Please upload all required documents for new profile submission.');
+        isValid = false;
+      }
+    }
+    
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
+
+  // Real-time file name checking
+  document.querySelectorAll('input[type="file"]').forEach(input => {
+    input.addEventListener('change', function() {
+      checkDuplicateFiles();
+    });
   });
 </script>
 

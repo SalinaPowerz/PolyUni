@@ -6,8 +6,9 @@ $email_error = "";
 $password_error = "";
 $email = "";
 
-if (isset($_POST['login_btn'])) {
+if(isset($_POST['login_btn'])){
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    // Corrected to use 'pass' to match the HTML input name from your provided code
     $password = $_POST['pass'];
 
     $has_error = false;
@@ -21,7 +22,7 @@ if (isset($_POST['login_btn'])) {
     }
 
     if (!$has_error) {
-        $stmt = $conn->prepare("SELECT Account_ID, Email, Password FROM account WHERE Email = ?");
+        $stmt = $conn->prepare("SELECT Account_ID, Password FROM account WHERE Email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -30,11 +31,10 @@ if (isset($_POST['login_btn'])) {
             $user = $result->fetch_assoc();
             $hashed_password = $user['Password'];
 
-            // Verify the password
             if (password_verify($password, $hashed_password)) {
                 $_SESSION['acc_id'] = $user['Account_ID'];
                 $_SESSION['email'] = $user['Email'];
-                header("Location: ../../Admission/form.php");
+                header("Location: ../../Admission/Form.php");
                 exit();
             } else {
                 $password_error = "Incorrect Password";
@@ -47,7 +47,6 @@ if (isset($_POST['login_btn'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>

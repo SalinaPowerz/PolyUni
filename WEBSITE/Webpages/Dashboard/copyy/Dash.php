@@ -55,11 +55,11 @@
         padding-top: 10px;
       }
       
-      /* Calendar container - made smaller */
+      /* Calendar container */
       .calendar-container {
         margin: 20px 0;
-        width: 80%;
-        max-width: 700px;
+        width: 100%;
+        max-width: 900px;
       }
       
       /* Calendar header with month and navigation */
@@ -71,24 +71,23 @@
       }
       
       .calendar-title {
-        font-size: 20px;
+        font-size: 22px;
         font-weight: bold;
         color: #32508F;
       }
       
       .month-navigation {
         display: flex;
-        gap: 8px;
+        gap: 10px;
       }
       
       .month-navigation a {
         color: #32508F;
         text-decoration: none;
-        padding: 4px 8px;
+        padding: 5px 10px;
         border: 1px solid #32508F;
         border-radius: 4px;
         font-family: Arial, sans-serif;
-        font-size: 12px;
       }
       
       .month-navigation a:hover {
@@ -96,30 +95,29 @@
         color: white;
       }
       
-      /* Calendar table styling - made more compact */
+      /* Calendar table styling */
       .calendar {
         width: 100%;
         border: 1px solid #ddd;
-        border-radius: 6px;
+        border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         table-layout: fixed;
-        font-size: 12px;
+        font-size: 14px;
         font-family: Arial, sans-serif;
       }
       
       .calendar th {
-        padding: 8px 4px;
+        padding: 10px;
         background-color: #32508F;
         color: white;
         font-weight: normal;
         text-align: center;
-        font-size: 11px;
       }
       
       .calendar td {
-        padding: 4px;
-        height: 60px;
+        padding: 8px;
+        height: 80px;
         vertical-align: top;
         border: 1px solid #eee;
         text-align: right;
@@ -132,19 +130,18 @@
         font-weight: bold;
       }
       
-      /* Event styling - made more compact */
+      /* Event styling */
       .calendar .event {
         display: block;
-        font-size: 9px;
-        margin-top: 2px;
+        font-size: 11px;
+        margin-top: 3px;
         text-align: left;
-        padding: 2px 3px;
-        border-radius: 2px;
+        padding: 3px 5px;
+        border-radius: 3px;
         word-break: break-word;
         background: #e3f2fd;
         color: #1565c0;
-        border-left: 2px solid #1565c0;
-        line-height: 1.2;
+        border-left: 3px solid #1565c0;
       }
       
       /* Empty cell styling */
@@ -155,8 +152,7 @@
       /* Day number styling */
       .day-number {
         font-weight: bold;
-        margin-bottom: 2px;
-        font-size: 11px;
+        margin-bottom: 3px;
       }
       
       /* Sidebar and main structure styles */
@@ -229,104 +225,81 @@
                 </div>
                 <div class="month-navigation">
                   <?php
-                    // Previous month link - FIXED
+                    // Previous month link
                     $prevMonth = $currentMonth - 1;
                     $prevYear = $currentYear;
                     if ($prevMonth < 1) {
                       $prevMonth = 12;
-                      $prevYear = $currentYear - 1;
+                      $prevYear--;
                     }
                     echo "<a href='?month=$prevMonth&year=$prevYear'>&lt; Prev</a>";
                     
-                    // Current month link - FIXED
-                    $currentMonthNum = date('m');
-                    $currentYearNum = date('Y');
-                    echo "<a href='?month=$currentMonthNum&year=$currentYearNum'>Current</a>";
+                    // Current month link
+                    echo "<a href='?month=".date('m')."&year=".date('Y')."'>Current</a>";
                     
-                    // Next month link - FIXED
+                    // Next month link
                     $nextMonth = $currentMonth + 1;
                     $nextYear = $currentYear;
                     if ($nextMonth > 12) {
                       $nextMonth = 1;
-                      $nextYear = $currentYear + 1;
+                      $nextYear++;
                     }
                     echo "<a href='?month=$nextMonth&year=$nextYear'>Next &gt;</a>";
                   ?>
                 </div>
               </div>
-              <table class="calendar">
-                <thead>
-                  <tr>
-                    <th style="width: 14.28%">Sun</th>
-                    <th style="width: 14.28%">Mon</th>
-                    <th style="width: 14.28%">Tue</th>
-                    <th style="width: 14.28%">Wed</th>
-                    <th style="width: 14.28%">Thu</th>
-                    <th style="width: 14.28%">Fri</th>
-                    <th style="width: 14.28%">Sat</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                    // Get the first day of the month and total days
-                    $firstDayOfMonth = date('N', strtotime("$currentYear-$currentMonth-01")); // Using 'N' for ISO-8601 (1=Mon, 7=Sun)
-                    $daysInMonth = date('t', strtotime("$currentYear-$currentMonth-01"));
-                    
-                    // Adjust for Sunday (change from 7 to 0 for table cells)
-                    $firstDayOfMonth = $firstDayOfMonth == 7 ? 0 : $firstDayOfMonth;
-                    
-                    // Fetch events from the database for the current month
-                    $events = [];
-                    $query = "SELECT Event_Date, Event_Title FROM calendar_events 
-                              WHERE MONTH(Event_Date) = $currentMonth AND YEAR(Event_Date) = $currentYear";
-                    $result = $conn->query($query);
-                    if ($result) {
-                      while ($row = $result->fetch_assoc()) {
-                        $events[$row['Event_Date']] = $row['Event_Title'];
+              <div class="calendar">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="width: 14.28%">Sun</th>
+                      <th style="width: 14.28%">Mon</th>
+                      <th style="width: 14.28%">Tue</th>
+                      <th style="width: 14.28%">Wed</th>
+                      <th style="width: 14.28%">Thu</th>
+                      <th style="width: 14.28%">Fri</th>
+                      <th style="width: 14.28%">Sat</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                      $firstDayOfMonth = date('w', strtotime("$currentYear-$currentMonth-01"));
+                      $daysInMonth = date('t', strtotime("$currentYear-$currentMonth-01"));
+                      $day = 1;
+
+                      // Fetch events from the database for the current month
+                      $events = [];
+                      $query = "SELECT Event_Date, Event_Title FROM calendar_events 
+                                WHERE MONTH(Event_Date) = $currentMonth AND YEAR(Event_Date) = $currentYear";
+                      $result = $conn->query($query);
+                      if ($result) {
+                        while ($row = $result->fetch_assoc()) {
+                          $events[$row['Event_Date']] = $row['Event_Title'];
+                        }
                       }
-                    }
-                    
-                    // Start the calendar table
-                    $day = 1;
-                    echo "<tr>";
-                    
-                    // Create empty cells for days before the first day of the month
-                    for ($i = 0; $i < $firstDayOfMonth; $i++) {
-                      echo "<td class='empty'></td>";
-                    }
-                    
-                    // Create cells for each day of the month
-                    for ($i = $firstDayOfMonth; $i < 7; $i++) {
-                      $date = sprintf("%04d-%02d-%02d", $currentYear, $currentMonth, $day);
-                      $isToday = ($day == date('j') && $currentMonth == date('m') && $currentYear == date('Y'));
-                      $class = $isToday ? 'today' : '';
-                      $event = isset($events[$date]) ? "<span class='event'>{$events[$date]}</span>" : '';
-                      echo "<td class='$class'><div class='day-number'>$day</div>$event</td>";
-                      $day++;
-                    }
-                    echo "</tr>";
-                    
-                    // Continue with the rest of the weeks
-                    while ($day <= $daysInMonth) {
-                      echo "<tr>";
-                      for ($i = 0; $i < 7 && $day <= $daysInMonth; $i++) {
-                        $date = sprintf("%04d-%02d-%02d", $currentYear, $currentMonth, $day);
-                        $isToday = ($day == date('j') && $currentMonth == date('m') && $currentYear == date('Y'));
-                        $class = $isToday ? 'today' : '';
-                        $event = isset($events[$date]) ? "<span class='event'>{$events[$date]}</span>" : '';
-                        echo "<td class='$class'><div class='day-number'>$day</div>$event</td>";
-                        $day++;
+
+                      for ($i = 0; $i < 6; $i++) {
+                        echo "<tr>";
+                        for ($j = 0; $j < 7; $j++) {
+                          if ($i === 0 && $j < $firstDayOfMonth) {
+                            echo "<td class='empty'></td>";
+                          } elseif ($day > $daysInMonth) {
+                            echo "<td class='empty'></td>";
+                          } else {
+                            $date = "$currentYear-$currentMonth-" . str_pad($day, 2, '0', STR_PAD_LEFT);
+                            $isToday = ($day == date('j') && $currentMonth == date('m') && $currentYear == date('Y'));
+                            $class = $isToday ? 'today' : '';
+                            $event = isset($events[$date]) ? "<span class='event'>{$events[$date]}</span>" : '';
+                            echo "<td class='$class'><div class='day-number'>$day</div>$event</td>";
+                            $day++;
+                          }
+                        }
+                        echo "</tr>";
                       }
-                      // Fill remaining cells if needed
-                      while ($i < 7) {
-                        echo "<td class='empty'></td>";
-                        $i++;
-                      }
-                      echo "</tr>";
-                    }
-                  ?>
-                </tbody>
-              </table>
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

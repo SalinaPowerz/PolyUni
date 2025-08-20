@@ -3,12 +3,12 @@ session_start();
 require_once 'connect.php';
 
 // Check if Account_ID is set
-if (!isset($_SESSION['Account_ID'])) {
+if (!isset($_SESSION['acc_id'])) {
     echo "<script>alert('No Account_ID found in session.'); window.location.href = 'form.php';</script>";
     exit();
 }
 
-$account_id = $_SESSION['Account_ID'];
+$account_id = $_SESSION['acc_id'];
 
 if (isset($_POST['submit_inputs'])) {
     // Save form data
