@@ -25,7 +25,7 @@
         </div>
         <div class="applicant_main">
             <h1 class="applicant-title">Applicants</h1>
-            <div class="filter-btns">
+            <div class="filter-btns"> 
                 <button class="filter-btn active" data-course="BSIT">BSIT</button>
                 <button class="filter-btn" data-course="BSCS">BSCS</button>
                 <button class="filter-btn" data-course="BSHM">BSHM</button>
