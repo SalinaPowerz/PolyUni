@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head> 
+    <link rel="stylesheet" href="admintryCSS.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <title>Admin - Polycium University</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar_filter">
+            <div class="sidebar_logo">
+                <img src="img/new.png" alt="University Logo" class="logo-img">
+                <div class="univ-name">
+                    <h2>Polycium University</h2>
+                    <h3>Administrator</h3>
+                </div>
+            </div>
+            <ul>
+                <li><a href="dashboardtry.php"><i class='fas fa-poll'></i><div class="title">Dashboard</div></a></li>
+                <li><a href="coursetry.php"><i class='fas fa-graduation-cap'></i><div class="title">Courses</div></a></li>
+                <li><a href="applicanttry.php"><i class='fas fa-users'></i><div class="title">Applicants</div></a></li>
+                <li><a href="announcetry.php"><i class='fas fa-bullhorn'></i><div class="title">Announcements</div></a></li>
+                <li><a href="logout.php"><i class='fa fa-share-square'></i><div class="title">Logout</div></a></li>
+            </ul>
+        </div>
+        <div class="dashboard_main">
+            <h1 class="dashboard-title">Dashboard Overview</h1>
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <span class="card-icon"><i class="fas fa-users"></i></span>
+                    <span class="card-title">Total Applicants</span>
+                    <span class="card-value">120</span>
+                </div>
+                <div class="dashboard-card">
+                    <span class="card-icon"><i class="fas fa-user-check"></i></span>
+                    <span class="card-title">Accepted Applicants</span>
+                    <span class="card-value">80</span>
+                </div>
+                <div class="dashboard-card">
+                    <span class="card-icon"><i class="fas fa-user-clock"></i></span>
+                    <span class="card-title">Pending Applicants</span>
+                    <span class="card-value">40</span>
+                </div> 
+                <div class="dashboard-card">
+                    <span class="card-icon"><i class="fas fa-file-alt"></i></span>
+                    <span class="card-title">Exam Takers</span>
+                    <span class="card-value">100</span>
+                </div>
+            </div>
+            <div class="dashboard-section">
+                <h2>Exam Participation Overview</h2>
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>Total</th>
+                            <th>Passed</th>
+                            <th>Failed</th>
+                            <th>Pending</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>100</td>
+                            <td>60</td>
+                            <td>20</td>
+                            <td>20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,328 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #92e4fd 0%, #4a73f8 100%);
+    color: #000000;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+.univ-name h2 {
+    color: #fff;
+    font-size: 1.5em;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.12), 0 1px 0 #232946;
+    line-height: 1.2;
+}
+
+.univ-name h3 {
+    color: #eebbc3;
+    font-size: 1em;
+    font-weight: 500;
+    text-align: center;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    margin: 0;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.10);
+}
+
+/* Sidebar Filter Design */
+.sidebar_filter {
+    width: 250px;
+    height: 100vh;
+    background: #232946;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.08);
+    border-radius: 0 20px 20px 0;
+    padding-top: 40px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+}
+
+.sidebar_filter ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    overflow-y: auto;
+    flex: 1 1 auto;
+    /* Custom scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: #4a73f8 #232946;
+}
+
+/* Custom scrollbar for Webkit browsers */
+.sidebar_filter ul::-webkit-scrollbar {
+    width: 8px;
+    background: #232946;
+    border-radius: 8px;
+}
+.sidebar_filter ul::-webkit-scrollbar-thumb {
+    background: linear-gradient(120deg, #4a73f8 40%, #b2f0ff 100%);
+    border-radius: 8px;
+}
+.sidebar_filter ul::-webkit-scrollbar-thumb:hover {
+    background: #4a73f8;
+}
+
+.sidebar_filter ul li {
+    margin-bottom: 4px;
+    /* Remove default list item styling */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sidebar_filter ul li:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar_filter ul li a {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 7px 24px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+    font-size: 1.1em;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 16px; /* Ensures even spacing between icon and text */
+}
+
+.sidebar_filter ul li a:hover,
+.sidebar_filter ul li a:focus {
+    background: #121629;
+    color: #eebbc3;
+}
+
+.sidebar_filter i {
+    font-size: 1.3em;
+    min-width: 28px;
+    text-align: center;
+}
+
+.sidebar_filter .title {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    /* Vertically center text with icon */
+    display: flex;
+    align-items: center;
+}
+
+/* Container adjustment for sidebar */
+.container {
+    margin-left: 250px;
+    padding: 40px;
+}
+
+.sidebar_logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-shrink: 0;
+}
+
+.logo-img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.univ-name {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'EB Garamond', Garamond, 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+}
+
+.applicant_main {
+    margin-left: 250px;
+    margin-right: 0;
+    padding: 40px 40px 40px 0;
+    min-height: 100vh;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+.applicant-title {
+    text-align: left;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-size: 2.5em;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    color: #232946;
+    background: none;
+    margin-bottom: 36px;
+    margin-top: 10px;
+    text-shadow: 0 2px 8px rgba(74,115,248,0.10), 0 1px 0 #fff;
+    border-left: 6px solid #4a73f8;
+    padding-left: 18px;
+    border-bottom: none;
+    border-radius: 0 18px 18px 0;
+}
+
+.container {
+    margin-left: 60px;
+    padding: 40px;
+}
+
+/* Filter Buttons */
+.filter-btns {
+    display: flex;
+    gap: 14px;
+    margin: 32px 0 24px 0;
+}
+.filter-btn {
+    background: #4a73f8;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 1em;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(74,115,248,0.08);
+    transition: background 0.2s, transform 0.2s;
+}
+.filter-btn.active, .filter-btn:hover {
+    background: #232946;
+    color: #fff;
+    transform: scale(1.04);
+}
+
+/* Table Container */
+.applicant-table-container {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(74,115,248,0.10);
+    padding: 32px 24px 24px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+/* Table Styles */
+.applicant-table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    font-size: 0.97em;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+.applicant-table th, .applicant-table td {
+    padding: 14px 20px;
+    text-align: left;
+    background: #f4f7fb;
+    border-radius: 12px;
+    border: none;
+}
+.applicant-table th {
+    background: #4a73f8;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 1.1em;
+}
+.applicant-table tr {
+    transition: box-shadow 0.18s, background 0.18s;
+}
+.applicant-table tbody tr:hover {
+    background: #e3edff;
+    box-shadow: 0 2px 12px rgba(74,115,248,0.10);
+}
+
+/* Column Sizing */
+.applicant-name-col { width: 30%; min-width: 180px; max-width: 350px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.exam-col { width: 15%; min-width: 100px; }
+.requirements-col { width: 20%; min-width: 120px; }
+.info-col { width: 15%; min-width: 100px; }
+.next-col { width: 20%; min-width: 100px; }
+
+/* Buttons */
+.view-btn, .next-btn, .req-btn {
+    background: #4a73f8;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 16px;
+    font-size: 1em;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.18s;
+    box-shadow: 0 1px 4px rgba(74,115,248,0.10);
+}
+.view-btn:hover, .next-btn:hover, .req-btn:hover {
+    background: #232946;
+    transform: scale(1.06);
+}
+.inactive {
+    background: #bdbdbd !important;
+    color: #fff !important;
+    cursor: not-allowed !important;
+}
+
+/* Requirement Status Icons */
+.req-complete { color: #4caf50; font-size: 1.3em; margin-left: 8px; vertical-align: middle; }
+.req-pending { color: #fbc02d; font-size: 1.3em; margin-left: 8px; vertical-align: middle; }
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(35,41,70,0.18);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    max-width: 400px;
+    margin: 80px auto;
+    box-shadow: 0 8px 32px rgba(74,115,248,0.18);
+    position: relative;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+.close-modal {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 1.5em;
+    color: #4a73f8;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Cute Scrollbar */
+.applicant-table-container::-webkit-scrollbar {
+    height: 10px;
+    background: #f4f7fb;
+    border-radius: 8px;
+}
+.applicant-table-container::-webkit-scrollbar-thumb {
+    background: #4a73f8;
+    border-radius: 8px;
+}
+.applicant-table-container {
+    scrollbar-width: thin;
+    scrollbar-color: #4a73f8 #f4f7fb;
+}
