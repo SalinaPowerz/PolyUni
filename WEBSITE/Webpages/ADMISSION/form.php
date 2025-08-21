@@ -94,15 +94,15 @@ function getOriginalFileName($filePath) {
       <h2>Admission Profile</h2>
       <p>Kindly fill out this profile</p>
 
-      <form id="admissionForm" method="POST" action="new_connect.php" enctype="multipart/form-data">
+      <form id="admissionForm" method="POST" action="new_connect.php" enctype="multipart/form-data" autocomplete="off">
         <!-- Personal Information -->
         <div class="form-row">
           <label class="required-field">First Name</label>
-          <label class="required-field">Middle Name</label>
+          <label>Middle Name</label>
         </div>
         <div class="form-row">
           <input type="text" name="firstname" placeholder="First Name" value="<?= $form_data['FirstName'] ?? '' ?>" class="uppercase-input" required />
-          <input type="text" name="middlename" placeholder="Middle Name" value="<?= $form_data['MiddleName'] ?? '' ?>" class="uppercase-input" required />
+          <input type="text" name="middlename" placeholder="Middle Name" value="<?= $form_data['MiddleName'] ?? '' ?>" class="uppercase-input" />
         </div>
         
         <div class="form-row">
