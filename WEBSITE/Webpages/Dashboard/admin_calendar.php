@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar Events Management</title>
     <style>
+        /* Navigation styles from nav.html and style.css */
+        .navigation:hover{
+            color: blue;
+            font-weight: bold;
+        }
+        
+        #Navigation_bar {
+            position: fixed; 
+            width: 100%; 
+            height: 60px; 
+            background-color: #32508F; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 17px; 
+            box-sizing: border-box;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+        }
+        
+        /* Original calendar styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,6 +37,7 @@
         body {
             background-color: #f5f5f5;
             padding: 20px;
+            padding-top: 80px; /* Added space for fixed navigation */
         }
         
         .container {
@@ -195,8 +218,17 @@
     </style>
 </head>
 <body>
+    <!-- Navigation bar from nav.html -->
+    <div id="Navigation_bar">
+        <div style="display: flex; align-items: center;">
+            <img src="../../Images/new.png" width="50px" alt="Logo" style="vertical-align: middle; margin-right: 10px;" />
+            
+        </div>
+
+    </div>
+    
     <div class="container">
-        <h1>Calendar Events Management</h1>
+        <!-- Removed the "Calendar Events Management" h1 heading -->
         
         <?php
         // Include database connection

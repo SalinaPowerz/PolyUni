@@ -114,14 +114,6 @@
         tr:hover {
             background-color: #f5f5f5;
         }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            color: #6c757d;
-            background-color: #f1f1f1;
-            border-radius: 5px;
-        }
         .search-container {
             display: flex;
             margin-bottom: 20px;
@@ -231,10 +223,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="footer">
-        <p>© 2025 Polycium University - Admission Management System</p>
     </div>
 
     <script>
