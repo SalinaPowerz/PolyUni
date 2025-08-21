@@ -89,7 +89,7 @@ if(isset($_POST['login_btn'])){
                 <div class="error-text" id="passwordError"><?= htmlspecialchars($password_error) ?></div>
             </div>
             <div class="forgot-password-link">
-                <a href="../forgot_password/index.php">Forgot Password?</a>
+                <a href="../forget/index.php">Forgot Password?</a>
             </div>
             <button class="login-btn" name="login_btn" type="submit">LOGIN</button>
         </form>
