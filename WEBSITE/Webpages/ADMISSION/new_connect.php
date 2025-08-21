@@ -11,23 +11,23 @@ if (!isset($_SESSION['acc_id'])) {
 $account_id = $_SESSION['acc_id'];
 
 if (isset($_POST['submit_inputs'])) {
-    // Save form data
-    $firstname = $_POST['firstname'];
-    $middlename = $_POST['middlename'];
-    $lastname = $_POST['lastname'];
-    $suffix = $_POST['suffix'];
+    // Save form data and convert to uppercase
+    $firstname = strtoupper($_POST['firstname']);
+    $middlename = strtoupper($_POST['middlename']);
+    $lastname = strtoupper($_POST['lastname']);
+    $suffix = strtoupper($_POST['suffix']);
     $dob = date('Y-m-d', strtotime($_POST['dob']));
     $sex = $_POST['sex'];
-    $religion = $_POST['religion'];
-    $blocklot = $_POST['blocklot'];
-    $street = $_POST['street'];
-    $barangay = $_POST['barangay'];
-    $city = $_POST['city'];
-    $province = $_POST['province'];
-    $fathername = $_POST['fathername'];
-    $mothername = $_POST['mothername'];
-    $guardianname = $_POST['guardianname'];
-    $email = $_POST['email'];
+    $religion = strtoupper($_POST['religion']);
+    $blocklot = strtoupper($_POST['blocklot']);
+    $street = strtoupper($_POST['street']);
+    $barangay = strtoupper($_POST['barangay']);
+    $city = strtoupper($_POST['city']);
+    $province = strtoupper($_POST['province']);
+    $fathername = strtoupper($_POST['fathername']);
+    $mothername = strtoupper($_POST['mothername']);
+    $guardianname = strtoupper($_POST['guardianname']);
+    $email = $_POST['email']; // Email is case-sensitive, so don't convert to uppercase
     $phoneno = $_POST['phoneno'];
     $contactem = $_POST['contactem'];
     $course = $_POST['course'];
@@ -109,8 +109,26 @@ if (isset($_POST['submit_inputs'])) {
             Form137 = '$form137Path', 
             HealthRecords = '$healthRecordsPath' 
             WHERE Account_ID = '$account_id'";
+            
         if ($conn->query($updateQuery)) {
-            echo "<script>alert('Profile updated successfully.'); window.location.href = '../Dashboard/Dash.php';</script>";
+            // Get the Ad_ID from the admission_form table
+            $getAdIdQuery = "SELECT Ad_ID FROM admission_form WHERE Account_ID = '$account_id'";
+            $adIdResult = $conn->query($getAdIdQuery);
+            
+            if ($adIdResult && $adIdResult->num_rows > 0) {
+                $adIdRow = $adIdResult->fetch_assoc();
+                $ad_id = $adIdRow['Ad_ID'];
+                
+                // Update the account table with the Ad_ID
+                $updateAccountQuery = "UPDATE account SET Ad_ID = '$ad_id' WHERE Account_ID = '$account_id'";
+                if ($conn->query($updateAccountQuery)) {
+                    echo "<script>alert('Profile updated successfully.'); window.location.href = '../Dashboard/Dash.php';</script>";
+                } else {
+                    echo "<script>alert('Profile updated but failed to update account reference: " . $conn->error . "'); window.location.href = '../Dashboard/Dash.php';</script>";
+                }
+            } else {
+                echo "<script>alert('Profile updated but failed to get admission ID.'); window.location.href = '../Dashboard/Dash.php';</script>";
+            }
         } else {
             echo "<script>alert('Error updating profile: " . $conn->error . "'); window.location.href = 'form.php';</script>";
         }
@@ -120,8 +138,18 @@ if (isset($_POST['submit_inputs'])) {
             (FirstName, MiddleName, LastName, Suffix, BirthDate, Sex, Religion, BlockLot, Street, Barangay, City, Province, Fathers_Name, Mothers_Name, Guardian, Email, Phone_num, Contact_num, Course_ID, ReportCard, Form137, HealthRecords, Account_ID) 
             VALUES 
             ('$firstname', '$middlename', '$lastname', '$suffix', '$dob', '$sex', '$religion', '$blocklot', '$street', '$barangay', '$city', '$province', '$fathername', '$mothername', '$guardianname', '$email', '$phoneno', '$contactem', '$course', '$reportCardPath', '$form137Path', '$healthRecordsPath', '$account_id')";
+            
         if ($conn->query($insertQuery)) {
-            echo "<script>alert('Profile created successfully.'); window.location.href = '../Dashboard/Dash.php';</script>";
+            // Get the newly inserted Ad_ID
+            $newAdId = $conn->insert_id;
+            
+            // Update the account table with the Ad_ID
+            $updateAccountQuery = "UPDATE account SET Ad_ID = '$newAdId' WHERE Account_ID = '$account_id'";
+            if ($conn->query($updateAccountQuery)) {
+                echo "<script>alert('Profile created successfully.'); window.location.href = '../Dashboard/Dash.php';</script>";
+            } else {
+                echo "<script>alert('Profile created but failed to update account reference: " . $conn->error . "'); window.location.href = '../Dashboard/Dash.php';</script>";
+            }
         } else {
             echo "<script>alert('Error creating profile: " . $conn->error . "'); window.location.href = 'form.php';</script>";
         }

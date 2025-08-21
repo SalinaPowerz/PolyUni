@@ -71,6 +71,10 @@ function getOriginalFileName($filePath) {
       font-size: 0.9em;
       margin-top: 5px;
     }
+    /* Style for uppercase text */
+    .uppercase-input {
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body>
@@ -97,8 +101,8 @@ function getOriginalFileName($filePath) {
           <label class="required-field">Middle Name</label>
         </div>
         <div class="form-row">
-          <input type="text" name="firstname" placeholder="First Name" value="<?= $form_data['FirstName'] ?? '' ?>" required />
-          <input type="text" name="middlename" placeholder="Middle Name" value="<?= $form_data['MiddleName'] ?? '' ?>" required />
+          <input type="text" name="firstname" placeholder="First Name" value="<?= $form_data['FirstName'] ?? '' ?>" class="uppercase-input" required />
+          <input type="text" name="middlename" placeholder="Middle Name" value="<?= $form_data['MiddleName'] ?? '' ?>" class="uppercase-input" required />
         </div>
         
         <div class="form-row">
@@ -106,8 +110,8 @@ function getOriginalFileName($filePath) {
           <label>Suffix</label>
         </div>
         <div class="form-row">
-          <input type="text" name="lastname" placeholder="Last Name" value="<?= $form_data['LastName'] ?? '' ?>" required />
-          <input type="text" name="suffix" placeholder="Suffix" value="<?= $form_data['Suffix'] ?? '' ?>" />
+          <input type="text" name="lastname" placeholder="Last Name" value="<?= $form_data['LastName'] ?? '' ?>" class="uppercase-input" required />
+          <input type="text" name="suffix" placeholder="Suffix" value="<?= $form_data['Suffix'] ?? '' ?>" class="uppercase-input" />
         </div>
         
         <div class="form-row">
@@ -129,8 +133,8 @@ function getOriginalFileName($filePath) {
           <label class="required-field">Street</label>
         </div>
         <div class="form-row">
-          <input type="text" name="blocklot" placeholder="Block/Lot" value="<?= $form_data['BlockLot'] ?? '' ?>" required />
-          <input type="text" name="street" placeholder="Street" value="<?= $form_data['Street'] ?? '' ?>" required />
+          <input type="text" name="blocklot" placeholder="Block/Lot" value="<?= $form_data['BlockLot'] ?? '' ?>" class="uppercase-input" required />
+          <input type="text" name="street" placeholder="Street" value="<?= $form_data['Street'] ?? '' ?>" class="uppercase-input" required />
         </div>
         
         <div class="form-row">
@@ -138,15 +142,15 @@ function getOriginalFileName($filePath) {
           <label class="required-field">City</label>
         </div>
         <div class="form-row">
-          <input type="text" name="barangay" placeholder="Barangay" value="<?= $form_data['Barangay'] ?? '' ?>" required />
-          <input type="text" name="city" placeholder="City" value="<?= $form_data['City'] ?? '' ?>" required />
+          <input type="text" name="barangay" placeholder="Barangay" value="<?= $form_data['Barangay'] ?? '' ?>" class="uppercase-input" required />
+          <input type="text" name="city" placeholder="City" value="<?= $form_data['City'] ?? '' ?>" class="uppercase-input" required />
         </div>
         
         <div class="form-row">
           <label class="required-field">Province</label>
         </div>
         <div class="form-row">
-          <input type="text" name="province" placeholder="Province" value="<?= $form_data['Province'] ?? '' ?>" required />
+          <input type="text" name="province" placeholder="Province" value="<?= $form_data['Province'] ?? '' ?>" class="uppercase-input" required />
         </div>
 
         <!-- Family Information -->
@@ -155,8 +159,8 @@ function getOriginalFileName($filePath) {
           <label class="required-field">Mother's Maiden Name</label>
         </div>
         <div class="form-row">
-          <input type="text" name="fathername" placeholder="Father's Name" value="<?= $form_data['Fathers_Name'] ?? '' ?>" required />
-          <input type="text" name="mothername" placeholder="Mother's Maiden Name" value="<?= $form_data['Mothers_Name'] ?? '' ?>" required />
+          <input type="text" name="fathername" placeholder="Father's Name" value="<?= $form_data['Fathers_Name'] ?? '' ?>" class="uppercase-input" required />
+          <input type="text" name="mothername" placeholder="Mother's Maiden Name" value="<?= $form_data['Mothers_Name'] ?? '' ?>" class="uppercase-input" required />
         </div>
         
         <div class="form-row">
@@ -164,7 +168,7 @@ function getOriginalFileName($filePath) {
           <label class="required-field">Email</label>
         </div>
         <div class="form-row">
-          <input type="text" name="guardianname" placeholder="Guardian's Name" value="<?= $form_data['Guardian'] ?? '' ?>" required />
+          <input type="text" name="guardianname" placeholder="Guardian's Name" value="<?= $form_data['Guardian'] ?? '' ?>" class="uppercase-input" required />
           <input type="email" id="email" name="email" placeholder="Email" value="<?= $form_data['Email'] ?? '' ?>" required />
         </div>
 
@@ -173,7 +177,7 @@ function getOriginalFileName($filePath) {
           <label class="required-field">Religion</label>
         </div>
         <div class="form-row">
-          <input type="text" name="religion" placeholder="Religion" value="<?= $form_data['Religion'] ?? '' ?>" required />
+          <input type="text" name="religion" placeholder="Religion" value="<?= $form_data['Religion'] ?? '' ?>" class="uppercase-input" required />
         </div>
 
         <!-- Contact Information -->
@@ -241,6 +245,17 @@ function getOriginalFileName($filePath) {
   </main>
 
 <script>
+  // Function to convert input to uppercase
+  function convertToUppercase(event) {
+    event.target.value = event.target.value.toUpperCase();
+  }
+
+  // Add event listeners to all text inputs that should be uppercase
+  document.querySelectorAll('.uppercase-input').forEach(input => {
+    input.addEventListener('input', convertToUppercase);
+    input.addEventListener('blur', convertToUppercase);
+  });
+
   // Restrict phone number and emergency contact to numbers only
   document.getElementById('phoneno').addEventListener('input', function (e) {
     this.value = this.value.replace(/[^0-9]/g, '');
