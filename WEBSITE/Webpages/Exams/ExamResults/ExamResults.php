@@ -109,40 +109,28 @@ if ($exam_id > 0) {
             background: #253d75;
         }
         
-        .navigation {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: #32508F;
-            color: white;
-            padding: 15px 20px;
-            z-index: 1000;
-        }
-        
-        .navigation img {
-            vertical-align: middle;
-            margin-right: 10px;
+        .navigation:hover{
+            color: blue;
+            font-weight: bold;
         }
     </style>
 </head>
-<body>
-    <div class="navigation">
-        <img src="../../../Images/new.png" width="40px" alt="Logo">
-        <span style="font-size: 24px;">POLYCIUM UNIVERSITY</span>
+<body style="margin:0;">
+    <div style="position: fixed; width: 100%; height: 60px; background-color: #32508F; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; box-sizing: border-box; z-index: 1000;" id="Navigation_bar">
+        <div style="display: flex; align-items: center;">
+            <img src="../../../Images/new.png" width="50px" alt="Logo" style="vertical-align: middle; margin-right: 10px;" />
+            <span style="font-size: 30px; color: #FFFFFF; font-family: Times New Roman">POLYCIUM UNIVERSITY</span>
+        </div>
     </div>
+    <div style="height: 70px;"></div>
 
     <div class="results-container">
         <div class="results-header">
             <h1><?php echo htmlspecialchars($exam_name); ?> - Exam Results</h1>
         </div>
         
-        <div class="score-circle">
-            <span class="percentage"><?php echo $percentage; ?>%</span>
-            <span>Score</span>
-        </div>
-        
         <div class="score-details">
-            <p>You scored <strong><?php echo $score; ?></strong> out of <strong><?php echo $total; ?></strong> questions</p>
+            <p>You have completed the exam</p>
         </div>
         
         <a href="../ExamOverview.php" class="back-btn">Back to Exams</a>
