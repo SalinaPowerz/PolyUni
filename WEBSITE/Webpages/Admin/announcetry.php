@@ -60,7 +60,7 @@
                         } else {
                             echo "<tr><td colspan='2' style='text-align:center;color:#aaa;'>No events found.</td></tr>";
                         }
-                        $conn->close();
+                        // $conn->close(); // Removed to keep connection open for form submission
                         ?>
                     </tbody>
                 </table>

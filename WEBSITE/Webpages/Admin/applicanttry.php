@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Applicants - Polycium University</title>
 </head>
-<body>
+<body> 
     <div class="container">
         <div class="sidebar_filter">
             <div class="sidebar_logo">
@@ -38,8 +38,7 @@
                         <tr>
                             <th class="applicant-name-col">Applicant Name</th>
                             <th class="exam-col">Exam</th>
-                            <th class="requirements-col">Requirements</th>
-                            <th class="info-col">View Information</th>
+                            <th class="info-col">Information</th>
                             <th class="next-col">Next</th>
                         </tr>
                     </thead>
@@ -54,28 +53,20 @@
     <script>
     // Sample data for demonstration
     const applicants = [
-        { name: 'Alice Cruz', course: 'BSIT', exam: 'Passed', requirements: 'complete', info: 'All info here', id: 1 },
-        { name: 'Brian Lee', course: 'BSCS', exam: 'Pending', requirements: 'pending', info: 'All info here', id: 2 },
-        { name: 'Carla Dela Cruz', course: 'BSHM', exam: 'Failed', requirements: 'pending', info: 'All info here', id: 3 }
+    { name: 'Alice Cruz', course: 'BSIT', exam: 'Passed', info: 'All info here', id: 1 },
+    { name: 'Brian Lee', course: 'BSCS', exam: 'Pending', info: 'All info here', id: 2 },
+    { name: 'Carla Dela Cruz', course: 'BSHM', exam: 'Failed', info: 'All info here', id: 3 }
     ];
     function renderTable(course) {
         const tbody = document.getElementById('applicants-table-body');
         tbody.innerHTML = '';
         applicants.filter(a => a.course === course).forEach(applicant => {
-            const reqIcon = applicant.requirements === 'complete'
-                ? `<span class='req-complete'><i class='fas fa-check-circle'></i></span>`
-                : `<span class='req-pending'><i class='fas fa-hourglass-half'></i></span>`;
-            const acceptActive = applicant.requirements === 'complete' ? '' : 'inactive';
             tbody.innerHTML += `
                 <tr>
                     <td>${applicant.name}</td>
                     <td>${applicant.exam}</td>
                     <td>
-                        <button class='req-btn' data-id='${applicant.id}'>View</button>
-                        ${reqIcon}
-                    </td>
-                    <td>
-                        <button class='view-btn' data-id='${applicant.id}'>View Information</button>
+                        <button class='view-btn' data-id='${applicant.id}'>View</button>
                     </td>
                     <td>
                         <button class='next-btn' data-id='${applicant.id}'>Next</button>
