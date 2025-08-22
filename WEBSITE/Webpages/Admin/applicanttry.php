@@ -25,12 +25,12 @@
         </div>
         <div class="applicant_main">
             <h1 class="applicant-title">Applicants</h1>
-            <div class="filter-btns"> 
-                <button class="filter-btn active" data-course="BSIT">BSIT</button>
-                <button class="filter-btn" data-course="BSCS">BSCS</button>
-                <button class="filter-btn" data-course="BSHM">BSHM</button>
-                <button class="filter-btn" data-course="BSEd">BSEd</button>
-                <button class="filter-btn" data-course="BMMA">BMMA</button>
+            <div class="filter-btns">
+                <a href="?course=BSIT"><button class="filter-btn<?php echo (!isset($_GET['course']) || $_GET['course'] == 'BSIT') ? ' active' : ''; ?>" data-course="BSIT">BSIT</button></a>
+                <a href="?course=BSCS"><button class="filter-btn<?php echo (isset($_GET['course']) && $_GET['course'] == 'BSCS') ? ' active' : ''; ?>" data-course="BSCS">BSCS</button></a>
+                <a href="?course=BSHM"><button class="filter-btn<?php echo (isset($_GET['course']) && $_GET['course'] == 'BSHM') ? ' active' : ''; ?>" data-course="BSHM">BSHM</button></a>
+                <a href="?course=BSEd"><button class="filter-btn<?php echo (isset($_GET['course']) && $_GET['course'] == 'BSEd') ? ' active' : ''; ?>" data-course="BSEd">BSEd</button></a>
+                <a href="?course=BMMA"><button class="filter-btn<?php echo (isset($_GET['course']) && $_GET['course'] == 'BMMA') ? ' active' : ''; ?>" data-course="BMMA">BMMA</button></a>
             </div>
             <div class="applicant-table-container">
                 <table class="applicant-table">
@@ -43,7 +43,41 @@
                         </tr>
                     </thead>
                     <tbody id="applicants-table-body">
-                        <!-- Dynamic rows here -->
+                        <?php
+                        require_once 'connect.php';
+                        // Map course short name to Course_ID or course string in DB
+                        $course_map = [
+                            'BSIT' => 'BSIT',
+                            'BSCS' => 'BSCS',
+                            'BSHM' => 'BSHM',
+                            'BSEd' => 'BSEd',
+                            'BMMA' => 'BMMA',
+                        ];
+                        $selected_course = isset($_GET['course']) ? $_GET['course'] : 'BSIT';
+                        $course_id = isset($course_map[$selected_course]) ? $course_map[$selected_course] : 'BSIT';
+                        $stmt = $conn->prepare("SELECT LastName, FirstName, MiddleName FROM admission_form WHERE Course_ID = ? ORDER BY LastName, FirstName, MiddleName");
+                        $stmt->bind_param("s", $course_id);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        if ($result && $result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $lname = htmlspecialchars($row['LastName']);
+                                $fname = htmlspecialchars($row['FirstName']);
+                                $mname = htmlspecialchars($row['MiddleName']);
+                                $full = strtoupper($lname) . ', ' . strtoupper($fname) . ' ' . strtoupper($mname);
+                                echo '<tr>';
+                                echo '<td>' . $full . '</td>';
+                                echo '<td>-</td>';
+                                echo '<td><button class="view-btn">View</button></td>';
+                                echo '<td><button class="next-btn">Next</button></td>';
+                                echo '</tr>';
+                            }
+                        } else {
+                            echo '<tr><td colspan="4" style="text-align:center;color:#aaa;">No applicants found.</td></tr>';
+                        }
+                        $stmt->close();
+                        $conn->close();
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -51,39 +85,6 @@
         <div id="modal" class="modal"><div class="modal-content"><span class="close-modal">&times;</span><div id="modal-body"></div></div></div>
     </div>
     <script>
-    // Sample data for demonstration
-    const applicants = [
-    { name: 'Alice Cruz', course: 'BSIT', exam: 'Passed', info: 'All info here', id: 1 },
-    { name: 'Brian Lee', course: 'BSCS', exam: 'Pending', info: 'All info here', id: 2 },
-    { name: 'Carla Dela Cruz', course: 'BSHM', exam: 'Failed', info: 'All info here', id: 3 }
-    ];
-    function renderTable(course) {
-        const tbody = document.getElementById('applicants-table-body');
-        tbody.innerHTML = '';
-        applicants.filter(a => a.course === course).forEach(applicant => {
-            tbody.innerHTML += `
-                <tr>
-                    <td>${applicant.name}</td>
-                    <td>${applicant.exam}</td>
-                    <td>
-                        <button class='view-btn' data-id='${applicant.id}'>View</button>
-                    </td>
-                    <td>
-                        <button class='next-btn' data-id='${applicant.id}'>Next</button>
-                    </td>
-                </tr>
-            `;
-        });
-    }
-    // Filter logic
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            renderTable(this.getAttribute('data-course'));
-        });
-    });
-    renderTable('BSIT');
     // Modal logic (demo)
     const modal = document.getElementById('modal');
     document.addEventListener('click', function(e) {

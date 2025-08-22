@@ -43,32 +43,6 @@
                     <span class="card-title">Pending Applicants</span>
                     <span class="card-value">40</span>
                 </div> 
-                <div class="dashboard-card">
-                    <span class="card-icon"><i class="fas fa-file-alt"></i></span>
-                    <span class="card-title">Exam Takers</span>
-                    <span class="card-value">100</span>
-                </div>
-            </div>
-            <div class="dashboard-section">
-                <h2>Exam Participation Overview</h2>
-                <table class="dashboard-table">
-                    <thead>
-                        <tr>
-                            <th>Total</th>
-                            <th>Passed</th>
-                            <th>Failed</th>
-                            <th>Pending</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>100</td>
-                            <td>60</td>
-                            <td>20</td>
-                            <td>20</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
