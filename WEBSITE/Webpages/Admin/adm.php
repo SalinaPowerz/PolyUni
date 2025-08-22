@@ -6,7 +6,7 @@
 	<title>Poly-Uni Admin</title>
 	<link rel="stylesheet" href="adm_style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-	 
+	
 </head>
 <body>
 	<form method="POST" action="adm.php">
@@ -15,11 +15,11 @@
 			<ul>
 			<li><div class="brand"> </div></li>
 			<li><a href="dashboard.php"><i class='fas fa-poll'></i><div class="title">Dashboard</div></a></li>
-			<li><a href="courses.php"><i class='fas fa-graduation-cap'></i><div class="title">Courses</div></a></li>
-			<li><a href="users.php"><i class='fas fa-users'></i><div class="title">Users</div></a></li>
+			<li><a href="#"><i class='fas fa-graduation-cap'></i><div class="title">Courses</div></a></li>
+			<li><a href="#"><i class='fas fa-users'></i><div class="title">Users</div></a></li>
 			<li><a href="adm.php"><i class='fas fa-school'></i><div class="title">Admissions</div></a></li>
-			<li><a href="exams.php"><i class='fas fa-file-alt'></i><div class="title">Exams</div></a></li>
-			<li><a href="logout.php"><i class='fa fa-share-square'></i><div class="title">Logout</div></a></li>
+			<li><a href="#"><i class='fas fa-file-alt'></i><div class="title">Exams</div></a></li>
+			<li><a href="#"><i class='fa fa-share-square'></i><div class="title">Logout</div></a></li>
 			</ul>
 		</div>
 		<div class="main" id="adm_front">

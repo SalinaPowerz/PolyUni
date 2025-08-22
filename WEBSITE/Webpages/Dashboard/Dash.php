@@ -200,7 +200,7 @@
     <div style="width: 100%; height: 60px; background-color: #32508F; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; box-sizing: border-box;" id="Navigation_bar">
       <div style="display: flex; align-items: center;">
         <img src="../../Images/new.png" width="50px" alt="Logo" style="vertical-align: middle; margin-right: 10px;" />
-        <span style="font-size: 30px; color: #FFFFFF;">POLYCIUM UNIVERSITY</span>
+        <span style="font-size: 30px; color: #FFFFFF; font-family: Times New Roman">POLYCIUM UNIVERSITY</span>
       </div>
     </div>
 
@@ -213,7 +213,7 @@
           
           <!-- Navigation Links -->
           <a href="../Admission/form.php"><div class="nav"><div class="about highlight">Profile</div></div></a>
-          <a href="../Exams/ExamStart/ExamStart.php"><div class="about-wrapper"><div class="about highlight">Exams</div></div></a>
+          <a href="../Exams/ExamOverview.php"><div class="about-wrapper"><div class="about highlight">Exams</div></div></a>
           <a href="Dash.php"><div class="div-wrapper"><div class="about highlight">Dashboard</div></div></a>
           <a href="../LogSign/log in/index.php"><div class="logout-wrapper"><div class="about highlight logout">Logout</div></div></a>
           

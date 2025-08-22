@@ -59,7 +59,7 @@ $_SESSION['exam_time_limit'] = $exam_time;
     .exam-title {
       position: absolute;
       top: 120px;
-      left: -105px;
+      left: 125px;
       width: 657px;
       font-family: "KonkhmerSleokchher-Regular", sans-serif, Arial, sans-serif;
       font-weight: 600;
@@ -68,15 +68,14 @@ $_SESSION['exam_time_limit'] = $exam_time;
       color: #32508F;
       z-index: 3;
     }
-/*    
-.exam-description {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #fff;
-  border-left: 10px solid #32508F;
-  border-radius: 4px;
-}
-  */
+    
+    .exam-description {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f5f5f5;
+      border-left: 4px solid #32508F;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
@@ -97,6 +96,11 @@ $_SESSION['exam_time_limit'] = $exam_time;
     />
 
     <div class="content-box" aria-live="polite">
+      <img
+        src="../../../Images/new.png"
+        alt="University Logo"
+        class="logo"
+      />
       
       <div class="exam-title">
         <?php echo htmlspecialchars($exam['Exam_Name']); ?> Exam
@@ -123,12 +127,12 @@ $_SESSION['exam_time_limit'] = $exam_time;
           <li>No dual screens/monitors</li>
         </ul>
         
-        <?php /*if (!empty($exam['Exam_Description'])): ?>
+        <?php if (!empty($exam['Exam_Description'])): ?>
         <div class="exam-description">
           <strong>Exam Description:</strong><br>
           <?php echo htmlspecialchars($exam['Exam_Description']); ?>
         </div>
-        <?php endif; */?>
+        <?php endif; ?>
       </div>
 
       <button

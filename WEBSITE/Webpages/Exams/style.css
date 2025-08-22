@@ -1,0 +1,149 @@
+body {
+  margin: 0;
+  overflow-x: hidden;
+  overflow: hidden;
+}
+
+.navigation:hover {
+  font-weight: bold;
+}
+
+.highlight {
+  position: relative;
+  z-index: 1000;
+}
+
+.highlight::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  width: 263px;
+  height: 65px;
+  background-color: rgba(173, 216, 230, 0.3);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.highlight:hover::before {
+  opacity: 1;
+}
+
+.ADMISSIONGOOD {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.ADMISSIONGOOD .div {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 1440px;
+  height: 1024px;
+  position: relative;
+}
+
+.ADMISSIONGOOD .overlap {
+  position: absolute;
+  width: 1511px;
+  height: 1032px;
+  top: 0px;
+  left: -1px;
+}
+
+.ADMISSIONGOOD .element {
+  position: absolute;
+  width: 1440px;
+  height: 960px;
+  top: 0;
+  left: 1px;
+}
+
+.ADMISSIONGOOD .rectangle {
+  position: absolute;
+  width: 1180px;
+  height: 960px;
+  top: 0;
+  left: 261px;
+  background-color: #ffffff;
+}
+
+.ADMISSIONGOOD .rectangle-2 {
+  position: absolute;
+  width: 1180px;
+  height: 960px;
+  top: 72px;
+  left: 331px;
+  background-color: #ffffff;
+}
+
+.ADMISSIONGOOD .text-wrapper {
+  position: absolute;
+  height: 36px;
+  top: 59px;
+  left: 313px;
+  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
+  font-weight: bold;
+  color: #000000;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ADMISSIONGOOD .rectangle-3 {
+  position: absolute;
+  width: 260px;
+  height: 960px;
+  top: 0;
+  left: 1px;
+  background-color: #32508fa3;
+}
+
+/* Navigation Links */
+.ADMISSIONGOOD .nav,
+.ADMISSIONGOOD .about-wrapper,
+.ADMISSIONGOOD .div-wrapper,
+.ADMISSIONGOOD .logout-wrapper {
+  position: absolute;
+  width: 261px;
+  height: 84px;
+  left: 0;
+}
+
+.ADMISSIONGOOD .nav { top: 78px; }
+.ADMISSIONGOOD .about-wrapper { top: 162px; }
+.ADMISSIONGOOD .div-wrapper { top: 246px; }
+.ADMISSIONGOOD .logout-wrapper { top: 330px; }
+
+.about {
+  position: absolute;
+  width: 231px;
+  height: 57px;
+  top: -31px;
+  left: 17px;
+  font-family: "Konkhmer Sleokchher-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 33px;
+  letter-spacing: 0;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.about:hover {
+  color: white;
+  font-weight: bold;
+}
+
+.ADMISSIONGOOD .rectangle-4 {
+  position: absolute;
+  width: 1180px;
+  height: 960px;
+  top: 72px;
+  left: 331px;
+  background-color: #ffffff;
+}
