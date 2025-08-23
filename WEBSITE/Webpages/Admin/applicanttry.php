@@ -55,20 +55,54 @@
                         ];
                         $selected_course = isset($_GET['course']) ? $_GET['course'] : 'BSIT';
                         $course_id = isset($course_map[$selected_course]) ? $course_map[$selected_course] : 'BSIT';
-                        $stmt = $conn->prepare("SELECT LastName, FirstName, MiddleName FROM admission_form WHERE Course_ID = ? ORDER BY LastName, FirstName, MiddleName");
+                        $stmt = $conn->prepare("SELECT Ad_ID, LastName, FirstName, MiddleName, Email, BirthDate, Sex, Religion, City, Province, ReportCard, Form137, HealthRecords FROM admission_form WHERE Course_ID = ? ORDER BY LastName, FirstName, MiddleName");
                         $stmt->bind_param("s", $course_id);
                         $stmt->execute();
                         $result = $stmt->get_result();
                         if ($result && $result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
+                                $adid = (int)$row['Ad_ID'];
                                 $lname = htmlspecialchars($row['LastName']);
                                 $fname = htmlspecialchars($row['FirstName']);
                                 $mname = htmlspecialchars($row['MiddleName']);
                                 $full = strtoupper($lname) . ', ' . strtoupper($fname) . ' ' . strtoupper($mname);
+                                $email = htmlspecialchars($row['Email']);
+                                $bdate = htmlspecialchars($row['BirthDate']);
+                                $sex = htmlspecialchars($row['Sex']);
+                                $religion = htmlspecialchars($row['Religion']);
+                                $city = htmlspecialchars($row['City']);
+                                $province = htmlspecialchars($row['Province']);
+                                $report = htmlspecialchars($row['ReportCard']);
+                                $form137 = htmlspecialchars($row['Form137']);
+                                $health = htmlspecialchars($row['HealthRecords']);
                                 echo '<tr>';
                                 echo '<td>' . $full . '</td>';
                                 echo '<td>-</td>';
-                                echo '<td><button class="view-btn">View</button></td>';
+                                echo '<td><button class="view-btn" data-id="' . $adid . '">View</button>';
+                                // Hidden info for modal, page 1 (info) and page 2 (images)
+                                echo '<div id="appinfo-' . $adid . '" class="applicant-info" style="display:none;">';
+                                echo '<div class="modal-page modal-info-page">';
+                                echo '<div class="modal-info-title">Applicant Information</div>';
+                                echo '<div class="modal-info-content">';
+                                echo '<div><strong>Name:</strong> ' . $full . '</div>';
+                                echo '<div><strong>Email:</strong> ' . $email . '</div>';
+                                echo '<div><strong>Birthdate:</strong> ' . $bdate . '</div>';
+                                echo '<div><strong>Sex:</strong> ' . $sex . '</div>';
+                                echo '<div><strong>Religion:</strong> ' . $religion . '</div>';
+                                echo '<div><strong>City:</strong> ' . $city . '</div>';
+                                echo '<div><strong>Province:</strong> ' . $province . '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                // Page 2: images
+                                echo '<div class="modal-page modal-image-page" style="display:none;">';
+                                echo '<div class="modal-info-title">Applicant Documents</div>';
+                                echo '<div class="modal-image-list">';
+                                if ($report) echo '<div class="modal-image-item"><span>Report Card</span><img src="../ADMISSION/' . $report . '" class="modal-img-zoom" alt="Report Card" onerror="this.onerror=null;this.src=\'../ADMISSION/uploads/placeholder.png\';"></div>';
+                                if ($form137) echo '<div class="modal-image-item"><span>Form 137</span><img src="../ADMISSION/' . $form137 . '" class="modal-img-zoom" alt="Form 137" onerror="this.onerror=null;this.src=\'../ADMISSION/uploads/placeholder.png\';"></div>';
+                                if ($health) echo '<div class="modal-image-item"><span>Health Records</span><img src="../ADMISSION/' . $health . '" class="modal-img-zoom" alt="Health Records" onerror="this.onerror=null;this.src=\'../ADMISSION/uploads/placeholder.png\';"></div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div></td>';
                                 echo '<td><button class="next-btn">Next</button></td>';
                                 echo '</tr>';
                             }
@@ -85,20 +119,77 @@
         <div id="modal" class="modal"><div class="modal-content"><span class="close-modal">&times;</span><div id="modal-body"></div></div></div>
     </div>
     <script>
-    // Modal logic (demo)
+    // Modal logic with two pages and image zoom
     const modal = document.getElementById('modal');
+    let currentPage = 1;
+    let totalPages = 2;
+    let navBtns = null;
     document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('view-btn')) {
-            document.getElementById('modal-body').innerHTML = '<h3>Student Information</h3><p>All info here (dynamic)</p>';
+        if (e.target.classList.contains('view-btn')) {  
+            var adid = e.target.getAttribute('data-id');
+            var infoDiv = document.getElementById('appinfo-' + adid);
+            if (infoDiv) {
+                document.getElementById('modal-body').innerHTML = infoDiv.innerHTML +
+                  '<div class="modal-nav"><button class="modal-next-btn">Next &raquo;</button></div>';
+                currentPage = 1;
+                showModalPage(currentPage);
+            } else {
+                document.getElementById('modal-body').innerHTML = '<h3>Applicant Information</h3><p>No info found.</p>';
+            }
             modal.style.display = 'flex';
         }
         if (e.target.classList.contains('close-modal')) {
             modal.style.display = 'none';
         }
-        // Add similar logic for requirements and next buttons as needed
+        if (e.target.classList.contains('modal-next-btn')) {
+            currentPage = 2;
+            showModalPage(currentPage);
+        }
+        if (e.target.classList.contains('modal-prev-btn')) {
+            currentPage = 1;
+            showModalPage(currentPage);
+        }
+        // Image zoom
+        if (e.target.classList.contains('modal-img-zoom')) {
+            showImageZoom(e.target.src, e.target.alt);
+        }
+        if (e.target.id === 'zoom-overlay') {
+            document.getElementById('zoom-overlay').remove();
+        }
     });
     window.onclick = function(event) {
         if (event.target == modal) modal.style.display = 'none';
+    }
+    function showModalPage(page) {
+        var modalBody = document.getElementById('modal-body');
+        var infoPage = modalBody.querySelector('.modal-info-page');
+        var imgPage = modalBody.querySelector('.modal-image-page');
+        var navDiv = modalBody.querySelector('.modal-nav');
+        if (page === 1) {
+            infoPage.style.display = '';
+            imgPage.style.display = 'none';
+            navDiv.innerHTML = '<button class="modal-next-btn">Next &raquo;</button>';
+        } else {
+            infoPage.style.display = 'none';
+            imgPage.style.display = '';
+            navDiv.innerHTML = '<button class="modal-prev-btn">&laquo; Back</button>';
+        }
+    }
+    function showImageZoom(src, alt) {
+        var overlay = document.createElement('div');
+        overlay.id = 'zoom-overlay';
+        overlay.style.position = 'fixed';
+        overlay.style.left = 0;
+        overlay.style.top = 0;
+        overlay.style.width = '100vw';
+        overlay.style.height = '100vh';
+        overlay.style.background = 'rgba(0,0,0,0.8)';
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.zIndex = 10000;
+        overlay.innerHTML = '<img src="' + src + '" alt="' + alt + '" style="max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 4px 32px #000;">';
+        document.body.appendChild(overlay);
     }
     </script>
 </body>
