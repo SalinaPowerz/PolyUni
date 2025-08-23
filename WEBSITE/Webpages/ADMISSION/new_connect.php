@@ -52,7 +52,10 @@ if (isset($_POST['submit_inputs'])) {
         }
         $uniqueName = uniqid() . '_' . $fileName;
         $reportCardPath = $uploadDir . $uniqueName;
-        move_uploaded_file($_FILES['report_card']['tmp_name'], $reportCardPath);
+            if (!move_uploaded_file($_FILES['report_card']['tmp_name'], $reportCardPath)) {
+                echo "<script>alert('Failed to upload Report Card. Please check file size, type, and folder permissions.'); window.location.href = 'form.php';</script>";
+                exit();
+            }
     }
 
     // Save Form 137
@@ -64,7 +67,10 @@ if (isset($_POST['submit_inputs'])) {
         }
         $uniqueName = uniqid() . '_' . $fileName;
         $form137Path = $uploadDir . $uniqueName;
-        move_uploaded_file($_FILES['form_137']['tmp_name'], $form137Path);
+            if (!move_uploaded_file($_FILES['form_137']['tmp_name'], $form137Path)) {
+                echo "<script>alert('Failed to upload Form 137. Please check file size, type, and folder permissions.'); window.location.href = 'form.php';</script>";
+                exit();
+            }
     }
 
     // Save Health Records
@@ -76,7 +82,10 @@ if (isset($_POST['submit_inputs'])) {
         }
         $uniqueName = uniqid() . '_' . $fileName;
         $healthRecordsPath = $uploadDir . $uniqueName;
-        move_uploaded_file($_FILES['health_records']['tmp_name'], $healthRecordsPath);
+            if (!move_uploaded_file($_FILES['health_records']['tmp_name'], $healthRecordsPath)) {
+                echo "<script>alert('Failed to upload Health Records. Please check file size, type, and folder permissions.'); window.location.href = 'form.php';</script>";
+                exit();
+            }
     }
 
     // Check if the user already has a record

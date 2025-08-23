@@ -43,9 +43,11 @@
 }
 .modal-image-list {
     display: flex;
-    flex-direction: column;
-    gap: 18px;
+    flex-direction: row;
+    gap: 32px;
     margin-top: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .modal-image-item {
     background: #f4f7fb;
@@ -54,8 +56,10 @@
     box-shadow: 0 2px 8px rgba(74,115,248,0.08);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
+    min-width: 240px;
+    max-width: 260px;
 }
 .modal-image-item span {
     font-weight: 600;
@@ -373,11 +377,14 @@ body {
     background: #fff;
     border-radius: 16px;
     padding: 32px 28px;
-    max-width: 400px;
-    margin: 80px auto;
+    max-width: 900px;
+    width: 90vw;
+    min-width: 340px;
+    margin: 40px auto;
     box-shadow: 0 8px 32px rgba(74,115,248,0.18);
     position: relative;
     font-family: 'Trebuchet MS', Arial, sans-serif;
+    transition: max-width 0.2s, width 0.2s;
 }
 .close-modal {
     position: absolute;

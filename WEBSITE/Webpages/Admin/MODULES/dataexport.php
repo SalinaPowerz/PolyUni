@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admission Data Export</title>
@@ -226,61 +226,18 @@
     </div>
 
     <script>
-        // Sample data based on the SQL provided
-        const admissionData = [
-            {
-                Ad_ID: 27,
-                FirstName: 'GREF',
-                MiddleName: '',
-                LastName: 'SDSDSD',
-                Suffix: 'DSD',
-                BirthDate: '1999-07-14',
-                Sex: 'Male',
-                Religion: 'DSDSD',
-                BlockLot: 'WWDD',
-                Street: 'DSDS',
-                Barangay: 'DSDS',
-                City: 'DSDS',
-                Province: 'DSDSDS',
-                Fathers_Name: 'SDSDS',
-                Mothers_Name: 'SDSD',
-                Guardian: 'SDSDS',
-                Email: 'helasa@ee',
-                Phone_num: '2212',
-                Contact_num: '2111',
-                Course_ID: 'BSIT',
-                ReportCard: 'uploads/68a363bbf23fe_Screenshot 2025-06-16 at 00-17-09 Academics.png',
-                Form137: 'uploads/68a366617f629_Screenshot 2025-06-16 at 00-19-31 Academics.png',
-                HealthRecords: 'uploads/68a366617ff81_HOMEPAGE(2).png',
-                Account_ID: 56
-            },
-            {
-                Ad_ID: 28,
-                FirstName: 'malachi',
-                MiddleName: 'nugat',
-                LastName: 'lama',
-                Suffix: 'single',
-                BirthDate: '2005-11-01',
-                Sex: 'Male',
-                Religion: 'Catholic',
-                BlockLot: '123',
-                Street: 'florid',
-                Barangay: 'palico 2',
-                City: 'imus',
-                Province: 'cavite',
-                Fathers_Name: 'yemire lama',
-                Mothers_Name: 'cha res',
-                Guardian: 'yemire lama',
-                Email: 'emire@yahoo.com',
-                Phone_num: '09345637452',
-                Contact_num: '09276354254',
-                Course_ID: 'BSIT',
-                ReportCard: 'uploads/68a4431cada10_RobloxScreenShot20250411_014600271.png',
-                Form137: 'uploads/68a4431caed7a_RobloxScreenShot20250508_223243568.png',
-                HealthRecords: 'uploads/68a4431cafa00_RobloxScreenShot20250607_215900256.png',
-                Account_ID: 57
+        // Fetch data from PHP
+        const admissionData = <?php
+        require_once '../connect.php';
+        $result = $conn->query("SELECT * FROM admission_form");
+        $data = [];
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
             }
-        ];
+        }
+        echo json_encode($data);
+        ?>;
 
         // Get unique courses for the filter
         const uniqueCourses = [...new Set(admissionData.map(item => item.Course_ID))];

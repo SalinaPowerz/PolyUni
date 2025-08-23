@@ -55,7 +55,7 @@
                         ];
                         $selected_course = isset($_GET['course']) ? $_GET['course'] : 'BSIT';
                         $course_id = isset($course_map[$selected_course]) ? $course_map[$selected_course] : 'BSIT';
-                        $stmt = $conn->prepare("SELECT Ad_ID, LastName, FirstName, MiddleName, Email, BirthDate, Sex, Religion, City, Province, ReportCard, Form137, HealthRecords FROM admission_form WHERE Course_ID = ? ORDER BY LastName, FirstName, MiddleName");
+                        $stmt = $conn->prepare("SELECT Ad_ID, LastName, FirstName, MiddleName, Email, BirthDate, Sex, Religion, City, Province, ReportCard, Form137, HealthRecords FROM admission_form WHERE Course_ID = ? AND Ad_ID NOT IN (SELECT Ad_ID FROM accepted_applicants) ORDER BY LastName, FirstName, MiddleName");
                         $stmt->bind_param("s", $course_id);
                         $stmt->execute();
                         $result = $stmt->get_result();
@@ -75,9 +75,29 @@
                                 $report = htmlspecialchars($row['ReportCard']);
                                 $form137 = htmlspecialchars($row['Form137']);
                                 $health = htmlspecialchars($row['HealthRecords']);
-                                echo '<tr>';
+                                // Exam status logic
+                                $exam_status = '';
+                                $exam_icon = '';
+                                $is_passed = false;
+                                if ($fname === 'GREF') {
+                                    $exam_status = 'PASSED';
+                                    $exam_icon = '<i class="fa fa-check-circle req-complete"></i>';
+                                    $is_passed = true;
+                                } elseif ($fname === 'AYESA') {
+                                    $exam_status = 'PASSED';
+                                    $exam_icon = '<i class="fa fa-check-circle req-complete"></i>';
+                                    $is_passed = true;
+                                } elseif ($fname === 'GEERO') {
+                                    $exam_status = 'PASSED';
+                                    $exam_icon = '<i class="fa fa-check-circle req-complete"></i>';
+                                    $is_passed = true;
+                                } else {
+                                    $exam_status = '-';
+                                    $exam_icon = '';
+                                }
+                                echo '<tr id="row-' . $adid . '">';
                                 echo '<td>' . $full . '</td>';
-                                echo '<td>-</td>';
+                                echo '<td>' . $exam_icon . ' ' . $exam_status . '</td>';
                                 echo '<td><button class="view-btn" data-id="' . $adid . '">View</button>';
                                 // Hidden info for modal, page 1 (info) and page 2 (images)
                                 echo '<div id="appinfo-' . $adid . '" class="applicant-info" style="display:none;">';
@@ -103,7 +123,10 @@
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</div></td>';
-                                echo '<td><button class="next-btn">Next</button></td>';
+                                // Next button logic
+                                $next_btn_class = $is_passed ? 'next-btn active-next-btn' : 'next-btn inactive';
+                                $next_btn_disabled = $is_passed ? '' : 'disabled';
+                                echo '<td><button class="' . $next_btn_class . '" data-id="' . $adid . '" data-fullname="' . $full . '" ' . $next_btn_disabled . '><i class="fa fa-arrow-circle-right"></i></button></td>';
                                 echo '</tr>';
                             }
                         } else {
@@ -124,6 +147,10 @@
     let currentPage = 1;
     let totalPages = 2;
     let navBtns = null;
+    // Accept modal logic
+    let acceptModal = null;
+    let acceptAdId = null;
+    let acceptFullName = '';
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('view-btn')) {  
             var adid = e.target.getAttribute('data-id');
@@ -155,6 +182,11 @@
         }
         if (e.target.id === 'zoom-overlay') {
             document.getElementById('zoom-overlay').remove();
+        }
+        if (e.target.classList.contains('next-btn') && !e.target.classList.contains('inactive')) {
+            acceptAdId = e.target.getAttribute('data-id');
+            acceptFullName = e.target.getAttribute('data-fullname');
+            showAcceptModal(acceptAdId, acceptFullName);
         }
     });
     window.onclick = function(event) {
@@ -190,6 +222,58 @@
         overlay.style.zIndex = 10000;
         overlay.innerHTML = '<img src="' + src + '" alt="' + alt + '" style="max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 4px 32px #000;">';
         document.body.appendChild(overlay);
+    }
+    function showAcceptModal(adid, fullname) {
+        // Remove previous modal if exists
+        if (document.getElementById('accept-modal')) {
+            document.getElementById('accept-modal').remove();
+        }
+        acceptModal = document.createElement('div');
+        acceptModal.id = 'accept-modal';
+        acceptModal.style.position = 'fixed';
+        acceptModal.style.left = 0;
+        acceptModal.style.top = 0;
+        acceptModal.style.width = '100vw';
+        acceptModal.style.height = '100vh';
+        acceptModal.style.background = 'rgba(35,41,70,0.18)';
+        acceptModal.style.display = 'flex';
+        acceptModal.style.alignItems = 'center';
+        acceptModal.style.justifyContent = 'center';
+        acceptModal.style.zIndex = 10001;
+        acceptModal.innerHTML = `
+            <div style="background:#fff;padding:32px 28px;border-radius:16px;box-shadow:0 8px 32px rgba(74,115,248,0.18);max-width:400px;width:90vw;min-width:340px;">
+                <div style="font-size:1.3em;font-weight:700;margin-bottom:18px;">Accept applicant (${fullname})?</div>
+                <div style="display:flex;gap:18px;justify-content:center;">
+                    <button id="accept-btn" style="background:#4a73f8;color:#fff;border:none;border-radius:8px;padding:8px 22px;font-size:1em;font-weight:600;cursor:pointer;">Accept</button>
+                    <button id="cancel-btn" style="background:#bdbdbd;color:#fff;border:none;border-radius:8px;padding:8px 22px;font-size:1em;font-weight:600;cursor:pointer;">Cancel</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(acceptModal);
+        document.getElementById('cancel-btn').onclick = function() {
+            acceptModal.remove();
+        };
+        document.getElementById('accept-btn').onclick = function() {
+            acceptApplicant(acceptAdId, acceptFullName);
+        };
+    }
+    function acceptApplicant(adid, fullname) {
+        // AJAX request to PHP to add to accepted_applicants
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'accept_applicant.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+            if (xhr.status === 200 && xhr.responseText === 'success') {
+                // Remove row from table
+                var row = document.getElementById('row-' + adid);
+                if (row) row.remove();
+                acceptModal.remove();
+                alert('Applicant accepted and moved to courses!');
+            } else {
+                alert('Failed to accept applicant: ' + xhr.responseText);
+            }
+        };
+        xhr.send('adid=' + encodeURIComponent(adid) + '&fullname=' + encodeURIComponent(fullname));
     }
     </script>
 </body>
