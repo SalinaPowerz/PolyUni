@@ -56,15 +56,15 @@
                         ];
                         $selected_course = isset($_GET['course']) ? $_GET['course'] : 'BSIT';
                         $course_id = $selected_course; 
-                            $stmt = $conn->prepare("SELECT aa.Accepted_ID, aa.FullName, aa.DateAccepted, aa.Ad_ID, af.Email, af.BirthDate, af.Sex, af.Religion, af.City, af.Province, af.ReportCard, af.Form137, af.HealthRecords FROM accepted_applicants aa LEFT JOIN admission_form af ON aa.Ad_ID = af.Ad_ID WHERE aa.Course_ID = ? ORDER BY aa.DateAccepted DESC");
+                            $stmt = $conn->prepare("SELECT aa.Accept_ID, aa.FullName, aa.Accept_Date, aa.Ad_ID, af.Email, af.BirthDate, af.Sex, af.Religion, af.City, af.Province, af.ReportCard, af.Form137, af.HealthRecords FROM accepted_applicants aa LEFT JOIN admission_form af ON aa.Ad_ID = af.Ad_ID WHERE aa.Course_ID = ? ORDER BY aa.Accept_Date DESC");
                             $stmt->bind_param("s", $course_id);
                             $stmt->execute();
                             $result = $stmt->get_result();
                             if ($result && $result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
-                                    $accepted_id = (int)$row['Accepted_ID'];
+                                    $accepted_id = (int)$row['Accept_ID'];
                                     $fullname = htmlspecialchars($row['FullName']);
-                                    $date_accepted = htmlspecialchars($row['DateAccepted']);
+                                    $date_accepted = htmlspecialchars($row['Accept_Date']);
                                     $adid = (int)$row['Ad_ID'];
                                     $email = htmlspecialchars($row['Email']);
                                     $bdate = htmlspecialchars($row['BirthDate']);
